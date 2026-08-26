@@ -1,0 +1,19 @@
+{
+  "experience_id": "TASK-IND-000061-iter6",
+  "domain": "induction",
+  "difficulty": 1,
+  "input": "Sequence: 10, 13, 16, 19, ?\nWhat is the next number?",
+  "candidate_reasoning": "1 pieces of evidence support this, from credible sources",
+  "critique": "Checked 5 critique dimensions. Found 5 issues.",
+  "correction": "expected: 22",
+  "final_answer": "1",
+  "expected_answer": "22",
+  "confidence": 1.0,
+  "verification_result": false,
+  "error_type": "incorrect_answer",
+  "training_status": "error_analysis",
+  "timestamp": 1787776305.4768512,
+  "model_version": "v0.0",
+  "is_hard_negative": false,
+  "metadata": {}
+}

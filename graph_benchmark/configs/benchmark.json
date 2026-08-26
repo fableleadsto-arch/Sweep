@@ -1,0 +1,57 @@
+{
+  "benchmark_name": "Sweep Graph Reasoning Benchmark",
+  "version": "1.0.0",
+  "description": "Independent benchmark comparing Sweep neural mesh against OpenAI on directed graph reasoning tasks",
+
+  "graph_sizes": [10, 25, 50, 100, 250, 500, 1000, 2500, 5000],
+  "difficulties": ["easy", "medium", "hard", "extreme"],
+  "difficulty_distribution": {
+    "easy": 0.20,
+    "medium": 0.30,
+    "hard": 0.30,
+    "extreme": 0.20
+  },
+  "tasks_per_type": 5,
+  "num_graphs_per_config": 20,
+
+  "task_types": [
+    "bfs",
+    "reachability",
+    "shortest_path",
+    "common_descendants",
+    "common_ancestors",
+    "parent_reconstruction",
+    "multi_hop_chain",
+    "contradictory"
+  ],
+
+  "context_groups": {
+    "small": {"max_tokens": 8000, "graph_sizes": [10, 25, 50]},
+    "medium": {"max_tokens": 32000, "graph_sizes": [100, 250]},
+    "large": {"max_tokens": 128000, "graph_sizes": [500, 1000]},
+    "extreme": {"max_tokens": 999999, "graph_sizes": [2500, 5000]}
+  },
+
+  "ablation_variants": [
+    {"name": "full", "description": "Full Sweep mesh (baseline)"},
+    {"name": "reduced_cores", "description": "Reduced number of processing cores"},
+    {"name": "reduced_neurons", "description": "Reduced neuron count per core"},
+    {"name": "reduced_connectivity", "description": "Reduced inter-core connectivity"},
+    {"name": "no_logic_gatherer", "description": "Without the logic gatherer"},
+    {"name": "simplified_logic", "description": "Simplified logic gatherer"},
+    {"name": "reduced_parallel", "description": "Reduced parallel processing"}
+  ],
+
+  "scaling_fractions": [0.10, 0.25, 0.50, 0.75, 1.00],
+
+  "seeds": {
+    "train": 42,
+    "validation": 123,
+    "test": 456
+  },
+
+  "openai_models": ["gpt-4o"],
+  "openai_note": "o1 requires special API access; gpt-4o used as available baseline",
+
+  "output_dir": "graph_benchmark/results"
+}

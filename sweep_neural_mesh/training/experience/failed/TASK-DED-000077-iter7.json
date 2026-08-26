@@ -1,0 +1,19 @@
+{
+  "experience_id": "TASK-DED-000077-iter7",
+  "domain": "deduction",
+  "difficulty": 1,
+  "input": "If Chi then Theta.\nIf Theta then Nu.\nIf Nu then Omega.\nIf Omega then Eta.\nNot Eta.\n\nWhat can be concluded about Chi?\nAnswer TRUE or FALSE.",
+  "candidate_reasoning": "1 evidence items contain both supporting and refuting elements",
+  "critique": "Checked 5 critique dimensions. Found 0 issues.",
+  "correction": "expected: FALSE",
+  "final_answer": "UNCERTAIN",
+  "expected_answer": "FALSE",
+  "confidence": 0.7554,
+  "verification_result": false,
+  "error_type": "incorrect_answer",
+  "training_status": "error_analysis",
+  "timestamp": 1787776309.1725817,
+  "model_version": "v0.0",
+  "is_hard_negative": false,
+  "metadata": {}
+}

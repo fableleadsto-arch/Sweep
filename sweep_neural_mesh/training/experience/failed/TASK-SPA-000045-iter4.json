@@ -1,0 +1,19 @@
+{
+  "experience_id": "TASK-SPA-000045-iter4",
+  "domain": "spatial_reasoning",
+  "difficulty": 1,
+  "input": "Epsilon is to the left of Tau. Tau is to the left of Omicron. Omicron is to the left of Chi.\n\nIs Chi to the left of Epsilon?\nAnswer YES or NO.",
+  "candidate_reasoning": "1 evidence items contain both supporting and refuting elements",
+  "critique": "Checked 5 critique dimensions. Found 0 issues.",
+  "correction": "expected: NO",
+  "final_answer": "UNCERTAIN",
+  "expected_answer": "NO",
+  "confidence": 0.7554,
+  "verification_result": false,
+  "error_type": "incorrect_answer",
+  "training_status": "error_analysis",
+  "timestamp": 1787776301.820107,
+  "model_version": "v0.0",
+  "is_hard_negative": false,
+  "metadata": {}
+}

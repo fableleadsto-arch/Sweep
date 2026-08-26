@@ -1,0 +1,19 @@
+{
+  "experience_id": "TASK-LOG-000019-iter1",
+  "domain": "logic",
+  "difficulty": 1,
+  "input": "Rho implies Nu. Nu implies Stella.\n\nDoes Rho imply Stella?\nAnswer YES or NO.",
+  "candidate_reasoning": "1 evidence items contain both supporting and refuting elements",
+  "critique": "Checked 5 critique dimensions. Found 0 issues.",
+  "correction": "expected: YES",
+  "final_answer": "UNCERTAIN",
+  "expected_answer": "YES",
+  "confidence": 0.6591,
+  "verification_result": false,
+  "error_type": "incorrect_answer",
+  "training_status": "error_analysis",
+  "timestamp": 1787776294.7714772,
+  "model_version": "v0.0",
+  "is_hard_negative": false,
+  "metadata": {}
+}

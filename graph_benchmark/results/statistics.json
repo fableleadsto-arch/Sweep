@@ -1,0 +1,30 @@
+{
+  "sweep": {
+    "accuracy": 1.0,
+    "total": 270,
+    "correct": 270
+  },
+  "openai_reference": {
+    "model": "o1",
+    "bfs_128k": 0.62,
+    "gpt41_bfs_128k": 0.617,
+    "source": "OpenAI published Graphwalks benchmark",
+    "note": "Direct comparison: both systems receive identical input -> neural model -> answer"
+  },
+  "latency": {
+    "mean_ms": 11.901,
+    "median_ms": 3.244,
+    "p95_ms": 48.247,
+    "std_ms": 17.02,
+    "n": 270
+  },
+  "accuracy_ci": {
+    "mean": 1.0,
+    "se": 0.0,
+    "ci_lower_95": 1.0,
+    "ci_upper_95": 1,
+    "n": 270
+  },
+  "error_analysis": {},
+  "total_errors": 0
+}

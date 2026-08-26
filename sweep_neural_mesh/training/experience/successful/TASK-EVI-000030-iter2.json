@@ -1,0 +1,19 @@
+{
+  "experience_id": "TASK-EVI-000030-iter2",
+  "domain": "evidence_evaluation",
+  "difficulty": 1,
+  "input": "Claim: music enhances concentration\n\nEvidence:\n- Study 1 supports the claim that music enhances concentration\n\nBased on the evidence, is the claim SUPPORTED, REFUTED, AMBIGUOUS, or INSUFFICIENT?\nAnswer:",
+  "candidate_reasoning": "1 pieces of evidence support this, from credible sources",
+  "critique": "Checked 5 critique dimensions. Found 5 issues.",
+  "correction": "",
+  "final_answer": "SUPPORTED",
+  "expected_answer": "SUPPORTED",
+  "confidence": 1.0,
+  "verification_result": true,
+  "error_type": "",
+  "training_status": "verified",
+  "timestamp": 1787776297.0637245,
+  "model_version": "v0.0",
+  "is_hard_negative": false,
+  "metadata": {}
+}

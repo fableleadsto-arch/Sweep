@@ -1,0 +1,64 @@
+{
+  "full": {
+    "accuracy": 1.0,
+    "correct": 270,
+    "total": 270,
+    "avg_latency_ms": 11.901,
+    "peak_memory_mb": 0.98,
+    "variant": "full"
+  },
+  "reduced_cores": {
+    "accuracy": 1.0,
+    "correct": 90,
+    "total": 90,
+    "avg_latency_ms": 2.713,
+    "peak_memory_mb": 0.16,
+    "variant": "reduced_cores",
+    "elapsed_s": 0.26
+  },
+  "reduced_neurons": {
+    "accuracy": 1.0,
+    "correct": 90,
+    "total": 90,
+    "avg_latency_ms": 5.156,
+    "peak_memory_mb": 0.16,
+    "variant": "reduced_neurons",
+    "elapsed_s": 0.49
+  },
+  "reduced_connectivity": {
+    "accuracy": 1.0,
+    "correct": 90,
+    "total": 90,
+    "avg_latency_ms": 4.369,
+    "peak_memory_mb": 0.15,
+    "variant": "reduced_connectivity",
+    "elapsed_s": 0.42
+  },
+  "no_logic_gatherer": {
+    "accuracy": 1.0,
+    "correct": 90,
+    "total": 90,
+    "avg_latency_ms": 2.903,
+    "peak_memory_mb": 0.14,
+    "variant": "no_logic_gatherer",
+    "elapsed_s": 0.27
+  },
+  "simplified_logic": {
+    "accuracy": 1.0,
+    "correct": 90,
+    "total": 90,
+    "avg_latency_ms": 2.669,
+    "peak_memory_mb": 0.14,
+    "variant": "simplified_logic",
+    "elapsed_s": 0.25
+  },
+  "reduced_parallel": {
+    "accuracy": 1.0,
+    "correct": 90,
+    "total": 90,
+    "avg_latency_ms": 2.923,
+    "peak_memory_mb": 0.15,
+    "variant": "reduced_parallel",
+    "elapsed_s": 0.28
+  }
+}

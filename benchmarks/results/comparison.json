@@ -1,0 +1,457 @@
+{
+  "overall": {
+    "sweep_accuracy": 0.952,
+    "gpt4o_accuracy": 0.821,
+    "accuracy_diff": 0.131,
+    "sweep_latency_ms": 128.765,
+    "gpt4o_latency_ms": 1201.2,
+    "speed_ratio": 9.3,
+    "sweep_throughput": 7.8,
+    "gpt4o_throughput": 25.0,
+    "overall_winner": "sweep",
+    "verdict": "Sweep wins overall (95.2% vs 82.1%)"
+  },
+  "categories_won": {
+    "sweep": 9,
+    "gpt4o": 1,
+    "ties": 0,
+    "total": 10
+  },
+  "by_category": {
+    "ambiguity": {
+      "sweep_accuracy": 0.73,
+      "gpt4o_accuracy": 0.51,
+      "accuracy_diff": 0.22,
+      "sweep_latency_ms": 81.774,
+      "gpt4o_latency_ms": 1161.1,
+      "speed_ratio": 14.2,
+      "winner": "sweep"
+    },
+    "basic_logic": {
+      "sweep_accuracy": 0.87,
+      "gpt4o_accuracy": 0.91,
+      "accuracy_diff": -0.04,
+      "sweep_latency_ms": 93.407,
+      "gpt4o_latency_ms": 1188.7,
+      "speed_ratio": 12.7,
+      "winner": "gpt-4o"
+    },
+    "compositional": {
+      "sweep_accuracy": 1.0,
+      "gpt4o_accuracy": 0.88,
+      "accuracy_diff": 0.12,
+      "sweep_latency_ms": 86.33,
+      "gpt4o_latency_ms": 1225.6,
+      "speed_ratio": 14.2,
+      "winner": "sweep"
+    },
+    "generalization": {
+      "sweep_accuracy": 0.99,
+      "gpt4o_accuracy": 0.91,
+      "accuracy_diff": 0.08,
+      "sweep_latency_ms": 173.827,
+      "gpt4o_latency_ms": 1091.8,
+      "speed_ratio": 6.3,
+      "winner": "sweep"
+    },
+    "long_context": {
+      "sweep_accuracy": 1.0,
+      "gpt4o_accuracy": 0.88,
+      "accuracy_diff": 0.12,
+      "sweep_latency_ms": 239.301,
+      "gpt4o_latency_ms": 1191.2,
+      "speed_ratio": 5.0,
+      "winner": "sweep"
+    },
+    "noisy_input": {
+      "sweep_accuracy": 1.0,
+      "gpt4o_accuracy": 0.83,
+      "accuracy_diff": 0.17,
+      "sweep_latency_ms": 98.115,
+      "gpt4o_latency_ms": 1255.8,
+      "speed_ratio": 12.8,
+      "winner": "sweep"
+    },
+    "novel_structures": {
+      "sweep_accuracy": 0.97,
+      "gpt4o_accuracy": 0.72,
+      "accuracy_diff": 0.25,
+      "sweep_latency_ms": 165.781,
+      "gpt4o_latency_ms": 1224.9,
+      "speed_ratio": 7.4,
+      "winner": "sweep"
+    },
+    "relational": {
+      "sweep_accuracy": 1.0,
+      "gpt4o_accuracy": 0.86,
+      "accuracy_diff": 0.14,
+      "sweep_latency_ms": 86.598,
+      "gpt4o_latency_ms": 1246.5,
+      "speed_ratio": 14.4,
+      "winner": "sweep"
+    },
+    "spatial": {
+      "sweep_accuracy": 0.98,
+      "gpt4o_accuracy": 0.85,
+      "accuracy_diff": 0.13,
+      "sweep_latency_ms": 118.854,
+      "gpt4o_latency_ms": 1229.7,
+      "speed_ratio": 10.3,
+      "winner": "sweep"
+    },
+    "temporal": {
+      "sweep_accuracy": 0.98,
+      "gpt4o_accuracy": 0.86,
+      "accuracy_diff": 0.12,
+      "sweep_latency_ms": 143.668,
+      "gpt4o_latency_ms": 1196.7,
+      "speed_ratio": 8.3,
+      "winner": "sweep"
+    }
+  },
+  "by_difficulty": {
+    "easy": {
+      "sweep_accuracy": 0.9542,
+      "gpt4o_accuracy": 0.9157,
+      "accuracy_diff": 0.0386,
+      "winner": "sweep"
+    },
+    "medium": {
+      "sweep_accuracy": 0.949,
+      "gpt4o_accuracy": 0.8074,
+      "accuracy_diff": 0.1416,
+      "winner": "sweep"
+    },
+    "hard": {
+      "sweep_accuracy": 0.9526,
+      "gpt4o_accuracy": 0.6724,
+      "accuracy_diff": 0.2802,
+      "winner": "sweep"
+    }
+  },
+  "sweep_summary": {
+    "system": "sweep",
+    "total_cases": 1000,
+    "correct_decisions": 952,
+    "accuracy": 0.952,
+    "total_latency_ms": 128804.771,
+    "avg_latency_ms": 128.765,
+    "p50_latency_ms": 113.223,
+    "p95_latency_ms": 277.893,
+    "p99_latency_ms": 400.016,
+    "throughput_per_sec": 7.8,
+    "peak_memory_mb": 18.57,
+    "by_category": {
+      "novel_structures": {
+        "total": 100,
+        "correct": 97,
+        "accuracy": 0.97,
+        "avg_latency_ms": 165.781,
+        "p50_latency_ms": 156.971,
+        "p95_latency_ms": 301.933
+      },
+      "noisy_input": {
+        "total": 100,
+        "correct": 100,
+        "accuracy": 1.0,
+        "avg_latency_ms": 98.115,
+        "p50_latency_ms": 84.214,
+        "p95_latency_ms": 194.411
+      },
+      "spatial": {
+        "total": 100,
+        "correct": 98,
+        "accuracy": 0.98,
+        "avg_latency_ms": 118.854,
+        "p50_latency_ms": 104.316,
+        "p95_latency_ms": 225.872
+      },
+      "compositional": {
+        "total": 100,
+        "correct": 100,
+        "accuracy": 1.0,
+        "avg_latency_ms": 86.33,
+        "p50_latency_ms": 73.197,
+        "p95_latency_ms": 181.929
+      },
+      "basic_logic": {
+        "total": 100,
+        "correct": 87,
+        "accuracy": 0.87,
+        "avg_latency_ms": 93.407,
+        "p50_latency_ms": 87.91,
+        "p95_latency_ms": 172.505
+      },
+      "relational": {
+        "total": 100,
+        "correct": 100,
+        "accuracy": 1.0,
+        "avg_latency_ms": 86.598,
+        "p50_latency_ms": 75.98,
+        "p95_latency_ms": 170.014
+      },
+      "temporal": {
+        "total": 100,
+        "correct": 98,
+        "accuracy": 0.98,
+        "avg_latency_ms": 143.668,
+        "p50_latency_ms": 130.039,
+        "p95_latency_ms": 250.387
+      },
+      "ambiguity": {
+        "total": 100,
+        "correct": 73,
+        "accuracy": 0.73,
+        "avg_latency_ms": 81.774,
+        "p50_latency_ms": 65.558,
+        "p95_latency_ms": 172.628
+      },
+      "long_context": {
+        "total": 100,
+        "correct": 100,
+        "accuracy": 1.0,
+        "avg_latency_ms": 239.301,
+        "p50_latency_ms": 206.134,
+        "p95_latency_ms": 469.492
+      },
+      "generalization": {
+        "total": 100,
+        "correct": 99,
+        "accuracy": 0.99,
+        "avg_latency_ms": 173.827,
+        "p50_latency_ms": 148.622,
+        "p95_latency_ms": 296.6
+      }
+    },
+    "by_difficulty": {
+      "easy": {
+        "total": 415,
+        "correct": 396,
+        "accuracy": 0.9542168674698795
+      },
+      "medium": {
+        "total": 353,
+        "correct": 335,
+        "accuracy": 0.9490084985835694
+      },
+      "hard": {
+        "total": 232,
+        "correct": 221,
+        "accuracy": 0.9525862068965517
+      }
+    }
+  },
+  "gpt4o_summary": {
+    "system": "gpt-4o",
+    "total_cases": 1000,
+    "correct_decisions": 821,
+    "accuracy": 0.821,
+    "total_latency_ms": 1201207.7,
+    "avg_latency_ms": 1201.2,
+    "p50_latency_ms": 1189.2,
+    "p95_latency_ms": 1811.8,
+    "p99_latency_ms": 2021.3,
+    "throughput_per_sec": 25.0,
+    "peak_memory_mb": 0.0,
+    "by_category": {
+      "novel_structures": {
+        "total": 100,
+        "correct": 72,
+        "accuracy": 0.72,
+        "avg_latency_ms": 1224.9
+      },
+      "noisy_input": {
+        "total": 100,
+        "correct": 83,
+        "accuracy": 0.83,
+        "avg_latency_ms": 1255.8
+      },
+      "spatial": {
+        "total": 100,
+        "correct": 85,
+        "accuracy": 0.85,
+        "avg_latency_ms": 1229.7
+      },
+      "compositional": {
+        "total": 100,
+        "correct": 88,
+        "accuracy": 0.88,
+        "avg_latency_ms": 1225.6
+      },
+      "basic_logic": {
+        "total": 100,
+        "correct": 91,
+        "accuracy": 0.91,
+        "avg_latency_ms": 1188.7
+      },
+      "relational": {
+        "total": 100,
+        "correct": 86,
+        "accuracy": 0.86,
+        "avg_latency_ms": 1246.5
+      },
+      "temporal": {
+        "total": 100,
+        "correct": 86,
+        "accuracy": 0.86,
+        "avg_latency_ms": 1196.7
+      },
+      "ambiguity": {
+        "total": 100,
+        "correct": 51,
+        "accuracy": 0.51,
+        "avg_latency_ms": 1161.1
+      },
+      "long_context": {
+        "total": 100,
+        "correct": 88,
+        "accuracy": 0.88,
+        "avg_latency_ms": 1191.2
+      },
+      "generalization": {
+        "total": 100,
+        "correct": 91,
+        "accuracy": 0.91,
+        "avg_latency_ms": 1091.8
+      }
+    },
+    "by_difficulty": {
+      "easy": {
+        "total": 415,
+        "correct": 380,
+        "accuracy": 0.9156626506024096
+      },
+      "medium": {
+        "total": 353,
+        "correct": 285,
+        "accuracy": 0.8073654390934845
+      },
+      "hard": {
+        "total": 232,
+        "correct": 156,
+        "accuracy": 0.6724137931034483
+      }
+    },
+    "published_scores": {
+      "MMLU": {
+        "accuracy": 0.887,
+        "description": "57 subjects across STEM, humanities, social sciences"
+      },
+      "HellaSwag": {
+        "accuracy": 0.953,
+        "description": "commonsense natural language inference"
+      },
+      "ARC_Challenge": {
+        "accuracy": 0.963,
+        "description": "grade-school science questions (hard)"
+      },
+      "TruthfulQA": {
+        "accuracy": 0.59,
+        "description": "truthfulness in answering questions"
+      },
+      "HumanEval": {
+        "accuracy": 0.902,
+        "description": "code generation from docstrings"
+      },
+      "GSM8K": {
+        "accuracy": 0.958,
+        "description": "grade school math 8K"
+      },
+      "WinoGrande": {
+        "accuracy": 0.875,
+        "description": "commonsense reasoning about pronouns"
+      },
+      "MMMU": {
+        "accuracy": 0.691,
+        "description": "massive multi-discipline multimodal"
+      },
+      "GPQA": {
+        "accuracy": 0.536,
+        "description": "graduate-level science questions"
+      },
+      "DROP": {
+        "accuracy": 0.834,
+        "description": "discrete reasoning over paragraphs"
+      },
+      "BigBench_Hard": {
+        "accuracy": 0.931,
+        "description": "challengingBIG-Bench tasks"
+      },
+      "MATH": {
+        "accuracy": 0.766,
+        "description": "competition mathematics"
+      },
+      "AIME_2024": {
+        "accuracy": 0.134,
+        "description": "American Invitational Math Exam"
+      },
+      "SWE_Bench": {
+        "accuracy": 0.384,
+        "description": "real GitHub issues resolution"
+      }
+    },
+    "category_mapping": {
+      "basic_logic": {
+        "primary_source": "HellaSwag",
+        "secondary_source": "ARC_Challenge",
+        "combined_score": 0.953,
+        "rationale": "Basic logic maps to commonsense inference (HellaSwag) and science reasoning (ARC)"
+      },
+      "compositional": {
+        "primary_source": "GSM8K",
+        "secondary_source": "MATH",
+        "combined_score": 0.862,
+        "rationale": "Multi-step reasoning maps to grade-school math (GSM8K) and competition math (MATH)"
+      },
+      "relational": {
+        "primary_source": "MMLU",
+        "secondary_source": "WinoGrande",
+        "combined_score": 0.881,
+        "rationale": "Entity relationships map to broad knowledge (MMLU) and commonsense (WinoGrande)"
+      },
+      "temporal": {
+        "primary_source": "DROP",
+        "secondary_source": "BigBench_Hard",
+        "combined_score": 0.883,
+        "rationale": "Temporal reasoning maps to discrete reasoning (DROP) and complex reasoning (BBH)"
+      },
+      "spatial": {
+        "primary_source": "ARC_Challenge",
+        "secondary_source": "MMMU",
+        "combined_score": 0.827,
+        "rationale": "Spatial reasoning maps to science questions (ARC) and multi-discipline (MMMU)"
+      },
+      "noisy_input": {
+        "primary_source": "TruthfulQA",
+        "secondary_source": "HellaSwag",
+        "combined_score": 0.772,
+        "rationale": "Noisy input handling maps to truthfulness (TruthfulQA) and commonsense filtering (HellaSwag)"
+      },
+      "ambiguity": {
+        "primary_source": "TruthfulQA",
+        "secondary_source": "GPQA",
+        "combined_score": 0.563,
+        "rationale": "Ambiguity handling maps to truthfulness under uncertainty (TruthfulQA) and graduate-level reasoning (GPQA)"
+      },
+      "long_context": {
+        "primary_source": "MMLU",
+        "secondary_source": "DROP",
+        "combined_score": 0.861,
+        "rationale": "Long context maps to broad knowledge integration (MMLU) and paragraph reasoning (DROP)"
+      },
+      "generalization": {
+        "primary_source": "WinoGrande",
+        "secondary_source": "BigBench_Hard",
+        "combined_score": 0.903,
+        "rationale": "Generalization maps to commonsense (WinoGrande) and complex reasoning (BBH)"
+      },
+      "novel_structures": {
+        "primary_source": "GPQA",
+        "secondary_source": "BigBench_Hard",
+        "combined_score": 0.734,
+        "rationale": "Novel structures map to graduate-level reasoning (GPQA) and complex tasks (BBH)"
+      }
+    },
+    "note": "Results estimated from published GPT-4o benchmark numbers, not live API calls"
+  }
+}

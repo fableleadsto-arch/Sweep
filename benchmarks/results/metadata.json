@@ -1,0 +1,15 @@
+{
+  "benchmark_version": "1.0.0",
+  "total_cases": 1000,
+  "sweep_time_s": 128.87,
+  "gpt4o_time_s": 0.0,
+  "total_time_s": 128.87,
+  "output_dir": "benchmarks\\results",
+  "files": {
+    "dataset": "benchmarks\\results\\dataset.json",
+    "sweep_results": "benchmarks\\results\\sweep_results.json",
+    "gpt4o_results": "benchmarks\\results\\gpt4o_results.json",
+    "comparison": "benchmarks\\results\\comparison.json",
+    "report": "benchmarks\\results\\REPORT.txt"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.13.7",
+  "processor": "Intel64 Family 6 Model 186 Stepping 3, GenuineIntel",
+  "machine": "AMD64",
+  "hostname": "yukii",
+  "cpu_count": 12,
+  "pid": 35204,
+  "ram_total_gb": 15.7,
+  "ram_available_gb": 1.1,
+  "pytorch": "2.9.1+cu126",
+  "cuda_available": false,
+  "tensorflow": "not imported (slow init)",
+  "sweep_version": "dev",
+  "git_commit": "a56069f08"
+}

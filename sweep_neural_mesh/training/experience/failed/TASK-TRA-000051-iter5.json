@@ -1,0 +1,19 @@
+{
+  "experience_id": "TASK-TRA-000051-iter5",
+  "domain": "transitivity",
+  "difficulty": 1,
+  "input": "Chi is greater than Phi. Phi is greater than Theta.\n\nIs Chi greater than Theta?\nAnswer YES or NO.",
+  "candidate_reasoning": "1 evidence items contain both supporting and refuting elements",
+  "critique": "Checked 5 critique dimensions. Found 0 issues.",
+  "correction": "expected: YES",
+  "final_answer": "UNCERTAIN",
+  "expected_answer": "YES",
+  "confidence": 0.6689,
+  "verification_result": false,
+  "error_type": "incorrect_answer",
+  "training_status": "error_analysis",
+  "timestamp": 1787776303.1752868,
+  "model_version": "v0.0",
+  "is_hard_negative": false,
+  "metadata": {}
+}

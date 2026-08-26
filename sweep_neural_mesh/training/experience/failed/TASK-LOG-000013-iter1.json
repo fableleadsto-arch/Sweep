@@ -1,0 +1,19 @@
+{
+  "experience_id": "TASK-LOG-000013-iter1",
+  "domain": "logic",
+  "difficulty": 1,
+  "input": "Mu implies Upsilon. Psi implies Upsilon.\n\nDoes Mu imply Psi?\nAnswer YES or NO.",
+  "candidate_reasoning": "1 evidence items contain both supporting and refuting elements",
+  "critique": "Checked 5 critique dimensions. Found 0 issues.",
+  "correction": "expected: NO",
+  "final_answer": "UNCERTAIN",
+  "expected_answer": "NO",
+  "confidence": 0.6534,
+  "verification_result": false,
+  "error_type": "incorrect_answer",
+  "training_status": "error_analysis",
+  "timestamp": 1787776293.6572928,
+  "model_version": "v0.0",
+  "is_hard_negative": false,
+  "metadata": {}
+}

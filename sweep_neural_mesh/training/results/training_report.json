@@ -1,0 +1,173 @@
+{
+  "snapshot_count": 2,
+  "latest": "============================================================\n  SWEEP TRAINING DASHBOARD\n============================================================\n\nMASTERY STATUS:\n  Mastered:      0\n  Practicing:    0\n  Novice:        17\n\nDOMAIN SCORES:\n  logic                        L1 \u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591 0.0% (0x)\n  reasoning                    L1 \u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591 0.0% (0x)\n  deduction                    L1 \u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591 0.0% (0x)\n  induction                    L1 \u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591 0.0% (0x)\n  transitivity                 L1 \u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591 0.0% (0x)\n  relational_reasoning         L1 \u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591 0.0% (0x)\n  temporal_reasoning           L1 \u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591 0.0% (0x)\n  spatial_reasoning            L1 \u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591 0.0% (0x)\n  evidence_evaluation          L1 \u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591 0.0% (0x)\n  contradiction_detection      L1 \u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591 0.0% (0x)\n  ambiguity_resolution         L1 \u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591 0.0% (0x)\n  uncertainty                  L1 \u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591 0.0% (0x)\n  pattern_recognition          L1 \u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591 0.0% (0x)\n  multi_step_planning          L1 \u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591 0.0% (0x)\n  graph_reasoning              L1 \u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591 0.0% (0x)\n  causal_reasoning             L1 \u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591 0.0% (0x)\n  novel_structure_reasoning    L1 \u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591 0.0% (0x)\n\nWEAKEST DOMAINS:\n\nSTRONGEST DOMAINS:\n\nCONFIDENCE CALIBRATION:\n  ECE:                       0.4300\n  Overconfidence penalty:     0.3100\n  Appropriate uncertainty:    0.0000\n\nPROGRESS:\n  Tasks attempted:            100\n  Overall accuracy:           10.0%\n  Version:                    v0.1\n  Elapsed:                    25s\n\nPATH TO 100%:\n  0/17 domains mastered (0%)\n  No hard-coded ceiling. Training continues until all domains mastered.\n============================================================",
+  "version": "v0.1",
+  "expertise": {
+    "logic": {
+      "score": 0.0,
+      "level": 1,
+      "attempts": 0,
+      "correct": 0,
+      "consecutive_correct": 0,
+      "is_mastered": false,
+      "calibration_gap": 0.0
+    },
+    "reasoning": {
+      "score": 0.0,
+      "level": 1,
+      "attempts": 0,
+      "correct": 0,
+      "consecutive_correct": 0,
+      "is_mastered": false,
+      "calibration_gap": 0.0
+    },
+    "deduction": {
+      "score": 0.0,
+      "level": 1,
+      "attempts": 0,
+      "correct": 0,
+      "consecutive_correct": 0,
+      "is_mastered": false,
+      "calibration_gap": 0.0
+    },
+    "induction": {
+      "score": 0.0,
+      "level": 1,
+      "attempts": 0,
+      "correct": 0,
+      "consecutive_correct": 0,
+      "is_mastered": false,
+      "calibration_gap": 0.0
+    },
+    "transitivity": {
+      "score": 0.0,
+      "level": 1,
+      "attempts": 0,
+      "correct": 0,
+      "consecutive_correct": 0,
+      "is_mastered": false,
+      "calibration_gap": 0.0
+    },
+    "relational_reasoning": {
+      "score": 0.0,
+      "level": 1,
+      "attempts": 0,
+      "correct": 0,
+      "consecutive_correct": 0,
+      "is_mastered": false,
+      "calibration_gap": 0.0
+    },
+    "temporal_reasoning": {
+      "score": 0.0,
+      "level": 1,
+      "attempts": 0,
+      "correct": 0,
+      "consecutive_correct": 0,
+      "is_mastered": false,
+      "calibration_gap": 0.0
+    },
+    "spatial_reasoning": {
+      "score": 0.0,
+      "level": 1,
+      "attempts": 0,
+      "correct": 0,
+      "consecutive_correct": 0,
+      "is_mastered": false,
+      "calibration_gap": 0.0
+    },
+    "evidence_evaluation": {
+      "score": 0.0,
+      "level": 1,
+      "attempts": 0,
+      "correct": 0,
+      "consecutive_correct": 0,
+      "is_mastered": false,
+      "calibration_gap": 0.0
+    },
+    "contradiction_detection": {
+      "score": 0.0,
+      "level": 1,
+      "attempts": 0,
+      "correct": 0,
+      "consecutive_correct": 0,
+      "is_mastered": false,
+      "calibration_gap": 0.0
+    },
+    "ambiguity_resolution": {
+      "score": 0.0,
+      "level": 1,
+      "attempts": 0,
+      "correct": 0,
+      "consecutive_correct": 0,
+      "is_mastered": false,
+      "calibration_gap": 0.0
+    },
+    "uncertainty": {
+      "score": 0.0,
+      "level": 1,
+      "attempts": 0,
+      "correct": 0,
+      "consecutive_correct": 0,
+      "is_mastered": false,
+      "calibration_gap": 0.0
+    },
+    "pattern_recognition": {
+      "score": 0.0,
+      "level": 1,
+      "attempts": 0,
+      "correct": 0,
+      "consecutive_correct": 0,
+      "is_mastered": false,
+      "calibration_gap": 0.0
+    },
+    "multi_step_planning": {
+      "score": 0.0,
+      "level": 1,
+      "attempts": 0,
+      "correct": 0,
+      "consecutive_correct": 0,
+      "is_mastered": false,
+      "calibration_gap": 0.0
+    },
+    "graph_reasoning": {
+      "score": 0.0,
+      "level": 1,
+      "attempts": 0,
+      "correct": 0,
+      "consecutive_correct": 0,
+      "is_mastered": false,
+      "calibration_gap": 0.0
+    },
+    "causal_reasoning": {
+      "score": 0.0,
+      "level": 1,
+      "attempts": 0,
+      "correct": 0,
+      "consecutive_correct": 0,
+      "is_mastered": false,
+      "calibration_gap": 0.0
+    },
+    "novel_structure_reasoning": {
+      "score": 0.0,
+      "level": 1,
+      "attempts": 0,
+      "correct": 0,
+      "consecutive_correct": 0,
+      "is_mastered": false,
+      "calibration_gap": 0.0
+    }
+  },
+  "calibration": {
+    "total_records": 100,
+    "ece": 0.43,
+    "overconfidence_penalty": 0.31,
+    "appropriate_uncertainty_reward": 0.0,
+    "avg_confidence": 0.83,
+    "overall_accuracy": 0.1
+  },
+  "mastery": {
+    "mastered": 0,
+    "practicing": 0,
+    "novice": 17
+  }
+}

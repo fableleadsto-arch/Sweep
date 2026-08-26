@@ -1,0 +1,19 @@
+{
+  "experience_id": "TASK-LOG-000016-iter1",
+  "domain": "logic",
+  "difficulty": 1,
+  "input": "Psi implies Cosmos. Cosmos implies Chi.\n\nDoes Psi imply Chi?\nAnswer YES or NO.",
+  "candidate_reasoning": "1 evidence items contain both supporting and refuting elements",
+  "critique": "Checked 5 critique dimensions. Found 0 issues.",
+  "correction": "expected: YES",
+  "final_answer": "UNCERTAIN",
+  "expected_answer": "YES",
+  "confidence": 0.6563,
+  "verification_result": false,
+  "error_type": "incorrect_answer",
+  "training_status": "error_analysis",
+  "timestamp": 1787776294.3155024,
+  "model_version": "v0.0",
+  "is_hard_negative": false,
+  "metadata": {}
+}

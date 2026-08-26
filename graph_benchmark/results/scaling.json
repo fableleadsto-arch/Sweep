@@ -1,0 +1,42 @@
+{
+  "10%": {
+    "accuracy": 1.0,
+    "correct": 27,
+    "total": 27,
+    "avg_latency_ms": 0.344,
+    "peak_memory_mb": 0.01,
+    "fraction": 0.1
+  },
+  "25%": {
+    "accuracy": 1.0,
+    "correct": 67,
+    "total": 67,
+    "avg_latency_ms": 1.662,
+    "peak_memory_mb": 0.07,
+    "fraction": 0.25
+  },
+  "50%": {
+    "accuracy": 1.0,
+    "correct": 135,
+    "total": 135,
+    "avg_latency_ms": 7.038,
+    "peak_memory_mb": 0.32,
+    "fraction": 0.5
+  },
+  "75%": {
+    "accuracy": 1.0,
+    "correct": 202,
+    "total": 202,
+    "avg_latency_ms": 21.929,
+    "peak_memory_mb": 0.96,
+    "fraction": 0.75
+  },
+  "100%": {
+    "accuracy": 1.0,
+    "correct": 270,
+    "total": 270,
+    "avg_latency_ms": 12.353,
+    "peak_memory_mb": 0.96,
+    "fraction": 1.0
+  }
+}

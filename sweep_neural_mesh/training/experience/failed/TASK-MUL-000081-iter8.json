@@ -1,0 +1,19 @@
+{
+  "experience_id": "TASK-MUL-000081-iter8",
+  "domain": "multi_step_planning",
+  "difficulty": 1,
+  "input": "To complete the task, you must:\nStep 1: Verify correctness\nStep 2: Implement changes\nStep 3: Communicate status\n\nHow many steps are required?\nAnswer with a number.",
+  "candidate_reasoning": "1 pieces of evidence support this, from credible sources",
+  "critique": "Checked 5 critique dimensions. Found 5 issues.",
+  "correction": "expected: 3",
+  "final_answer": "1",
+  "expected_answer": "3",
+  "confidence": 1.0,
+  "verification_result": false,
+  "error_type": "incorrect_answer",
+  "training_status": "error_analysis",
+  "timestamp": 1787776310.6065485,
+  "model_version": "v0.0",
+  "is_hard_negative": false,
+  "metadata": {}
+}

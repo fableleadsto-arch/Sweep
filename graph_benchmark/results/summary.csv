@@ -1,0 +1,2 @@
+system,accuracy,total,correct,avg_latency_ms
+sweep_full,1.0000,120,120,11.1
