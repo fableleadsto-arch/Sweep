@@ -1,2 +1,19 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Force GitHub to detect Python as primary language
+*.py linguist-detectable=true
+*.cpp linguist-detectable=false
+*.h linguist-detectable=false
+
+# Mark non-Python code as vendored (excluded from language stats)
+cpp/** linguist-vendored
+benchmarks/** linguist-vendored
+graph_benchmark/** linguist-vendored
+models/** linguist-vendored
+scripts/** linguist-vendored
+.githooks/** linguist-vendored
+
+# Mark generated files
+sweep_neural_mesh/training/versions/** linguist-generated
+graph_benchmark/results/** linguist-generated
