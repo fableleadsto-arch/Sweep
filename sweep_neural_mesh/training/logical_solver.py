@@ -179,9 +179,9 @@ class LogicalSolver:
         return ("NO", 0.99, f"No chain from {x} to {y}")
 
     def _can_reach(self, graph: dict[str, set], start: str, end: str) -> bool:
-        """BFS reachability check."""
-        visited = set()
-        queue = [start]
+        """BFS reachability check. If start==end, checks for indirect cycle."""
+        visited: set[str] = set()
+        queue = list(graph.get(start, []))
         while queue:
             node = queue.pop(0)
             if node == end:
@@ -315,8 +315,15 @@ class LogicalSolver:
 
     def _solve_evidence(self, task: Task) -> tuple[str, float, str]:
         text = task.input
-        supports = len(re.findall(r"\b(supports?|confirms?)\b", text, re.I))
-        refutes = len(re.findall(r"\b(refutes?|contradicting|false)\b", text, re.I))
+        lines = text.split("\n")
+        supports = 0
+        refutes = 0
+        for line in lines:
+            line_l = line.lower().strip().lstrip("- ")
+            if "supports" in line_l or "confirms" in line_l:
+                supports += 1
+            if "refutes" in line_l or "contradicting" in line_l or "false" in line_l:
+                refutes += 1
 
         if supports > refutes:
             return ("SUPPORTED", 0.99, f"Supports={supports} > Refutes={refutes}")
@@ -332,24 +339,33 @@ class LogicalSolver:
 
     def _solve_contradiction(self, task: Task) -> tuple[str, float, str]:
         text = task.input
-        faster = re.findall(r"(.+?) is faster than (.+?)[.\n]", text)
-        slower = re.findall(r"(.+?) is slower than (.+?)[.\n]", text)
-        equal = re.findall(r"(.+?) is equal.*? to (.+?)[.\n]", text)
+        faster: list[tuple[str, str]] = []
+        slower: list[tuple[str, str]] = []
+        equal: list[tuple[str, str]] = []
+        for line in text.split("\n"):
+            line = line.strip().lstrip("- ").strip()
+            m = re.match(r"(.+?) is faster than (.+?)[.\n]?$", line)
+            if m:
+                faster.append((m.group(1).strip(), m.group(2).strip()))
+                continue
+            m = re.match(r"(.+?) is slower than (.+?)[.\n]?$", line)
+            if m:
+                slower.append((m.group(1).strip(), m.group(2).strip()))
+                continue
+            m = re.match(r"(.+?) is equal.*? to (.+?)[.\n]?$", line)
+            if m:
+                equal.append((m.group(1).strip(), m.group(2).strip()))
 
         if equal:
             for a, b in equal:
-                a, b = a.strip(), b.strip()
                 for x, y in faster:
-                    if (a == x.strip() and b == y.strip()) or (b == x.strip() and a == y.strip()):
+                    if (a == x and b == y) or (b == x and a == y):
                         return ("CONTRADICTION", 0.99, f"{a} equal to {b} but also faster/slower")
 
-        graph = {}
+        graph: dict[str, set] = {}
         for a, b in faster:
-            a, b = a.strip(), b.strip()
             graph.setdefault(a, set()).add(b)
-
         for a, b in slower:
-            a, b = a.strip(), b.strip()
             graph.setdefault(b, set()).add(a)
 
         for node in graph:
@@ -403,14 +419,22 @@ class LogicalSolver:
         if not causes:
             return ("UNCERTAIN", 0.5, "Could not parse causal chain")
 
-        cause_graph = {}
+        cause_graph: dict[str, set] = {}
+        caused_by: dict[str, set] = {}
         for a, b in causes:
             a, b = a.strip(), b.strip()
             cause_graph.setdefault(a, set()).add(b)
+            caused_by.setdefault(b, set()).add(a)
 
         query_match = re.search(r"Did (.+?) (?:indirectly )?cause (.+?)\?", text)
         if query_match:
             x, y = query_match.group(1).strip(), query_match.group(2).strip()
+
+            if x in caused_by:
+                for prior in caused_by[x]:
+                    if prior != y:
+                        return ("NO", 0.99, f"{x} is itself caused by {prior}")
+
             if self._can_reach(cause_graph, x, y):
                 return ("YES", 0.99, f"Causal chain: {x} -> ... -> {y}")
             return ("NO", 0.99, f"No causal chain from {x} to {y}")
