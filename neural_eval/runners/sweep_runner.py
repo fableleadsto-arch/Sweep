@@ -10,6 +10,7 @@ import time
 from typing import Any
 
 from sweep_neural_mesh.neurons.cortex import ReasoningCortex
+from sweep_neural_mesh.neurons.proof_mesh import NeuralProofMesh
 from neural_eval.core import Task, Result
 
 
@@ -17,12 +18,15 @@ class SweepRunner:
     """
     Runs tasks through Sweep's neural mesh only.
 
-    The cortex provides a decision (support/refute/mixed/insufficient)
-    which is mapped to the expected answer format.
+    The cortex provides a neural decision (support/refute/mixed/insufficient).
+    Sweep's own grounded reasoning neurons (NeuralProofMesh) then refine the
+    decision where they form explicit logical structure; when they reach a
+    confident conclusion, their canonical answer drives the final prediction.
     """
 
     def __init__(self) -> None:
         self._cortex = ReasoningCortex()
+        self._proof_mesh = NeuralProofMesh()
         self._step_count = 0
 
     def run(self, task: Task) -> Result:
@@ -34,21 +38,35 @@ class SweepRunner:
             evidence=[task.input_text],
         )
 
-        latency_ms = (time.perf_counter() - t0) * 1000
-
         predicted = self._map_answer(result.decision, result.reasoning, task)
+
+        # Sweep's grounded reasoning neurons: explicit proof propagation.
+        # Used when they can form strong logical structure for this task.
+        pm = self._proof_mesh.solve(task.input_text, [task.input_text])
+        if pm.answer is not None and pm.conclusion in (
+            "supported", "refuted", "mixed", "insufficient",
+        ):
+            predicted = str(pm.answer).strip()
+            logical_applied = True
+        else:
+            logical_applied = False
+
+        latency_ms = (time.perf_counter() - t0) * 1000
 
         return Result(
             task_id=task.task_id,
             predicted=predicted,
             expected=task.expected_output,
             correct=predicted.strip().upper() == task.expected_output.strip().upper(),
-            confidence=result.confidence,
+            confidence=pm.confidence if logical_applied else result.confidence,
             latency_ms=latency_ms,
             reasoning_steps=self._step_count,
             metadata={
                 "cortex_decision": result.decision,
                 "cortex_reasoning": result.reasoning[:200],
+                "proof_mesh_applied": logical_applied,
+                "proof_mesh_conclusion": pm.conclusion,
+                "proof_mesh_answer": pm.answer,
             },
         )
 

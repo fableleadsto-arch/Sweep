@@ -3,8 +3,8 @@
     "cpu_count": 12,
     "cpu_name": "Intel64 Family 6 Model 186 Stepping 3, GenuineIntel",
     "ram_gb": 15.7,
-    "ram_available_gb": 1.0,
-    "disk_free_gb": 219.1,
+    "ram_available_gb": 1.8,
+    "disk_free_gb": 219.2,
     "gpu": "NONE DETECTED",
     "gpu_model": "NONE",
     "gpu_vram_gb": 0
@@ -31,7 +31,7 @@
     "whisper": "20250625"
   },
   "sweep_config": {
-    "git_commit": "c6fe41878461c534edee775d080d2d5626831e45",
+    "git_commit": "6d4ab3c5cead968e5a71750a77b7cd60d4323e89",
     "mesh_init_error": "No module named 'sweep_neural_mesh.neurons.mesh'",
     "sweep_version": "0.1.0",
     "neural_mesh_version": "9-stage-biological",

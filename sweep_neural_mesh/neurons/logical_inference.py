@@ -163,6 +163,17 @@ class LogicalInferenceEngine:
                 inference_chain=chain,
             )
 
+        # Step 4b: Apply hypothetical syllogism on if-then chains
+        condition_chain = self._apply_conditional_chain(query, evidence)
+        if condition_chain:
+            chain.extend(condition_chain["chain"])
+            return InferenceResult(
+                conclusion=condition_chain["conclusion"],
+                confidence=condition_chain["confidence"],
+                reasoning=condition_chain["reasoning"],
+                inference_chain=chain,
+            )
+
         # Step 5: Apply category closure / syllogisms
         syllogism = self._apply_syllogism(evidence, query)
         if syllogism:
@@ -339,6 +350,100 @@ class LogicalInferenceEngine:
                     }
 
         return None
+
+    def _apply_conditional_chain(
+        self, query: str, evidence: list[str]
+    ) -> dict | None:
+        """
+        Hypothetical syllogism on if-then (implies) conditionals.
+
+        Given "A implies B" and "B implies C", derive "A implies C".
+        Answers queries of the form "Does X imply Y?", "Does X lead to Y?",
+        "Is X implied by Y?", or "Is X true?" where the truth of X must
+        be traced along an implication chain.
+
+        Conclusion is "supported" if start reaches target, "refuted" if a
+        chain from start exists but never reaches target (the implication
+        is not derivable), otherwise "insufficient" (no structure to judge).
+        """
+        if len(self._conditionals) < 1:
+            return None
+
+        # Build an implication graph: antecedent -> {consequents}
+        graph: dict[str, set[str]] = {}
+        for cond in self._conditionals:
+            ant = cond.antecedent.strip()
+            con = cond.consequent.strip()
+            graph.setdefault(ant, set()).add(con)
+
+        query_lower = query.lower()
+
+        # Identify the start (subject in question) and target.
+        # "Does X imply Y?" -> start=X, target=Y
+        # "Is X older than Y?" handled by comparison transitivity above.
+        start: str | None = None
+        target: str | None = None
+
+        imply_match = re.search(
+            r'does\s+(\w+)\s+(?:imply|lead\s+to|reach|cause|entail)\s+(\w+)',
+            query_lower,
+        )
+        if imply_match:
+            start = imply_match.group(1)
+            target = imply_match.group(2)
+        else:
+            # "Does X imply Y"? via "if X then Y" query forms
+            m = re.search(r'^(?:is|does)\s+(.+?)\s+(?:true|hold)\??$', query_lower)
+            if m:
+                start = m.group(1).split()[0] if m.group(1) else None
+
+        if not start or not target:
+            return None
+
+        if start not in graph:
+            return None
+
+        # BFS reachability from start.
+        visited: set[str] = set()
+        stack = [start]
+        chain_edges: list[tuple[str, str]] = []
+        while stack:
+            node = stack.pop()
+            if node in visited:
+                continue
+            visited.add(node)
+            for nxt in graph.get(node, set()):
+                chain_edges.append((node, nxt))
+                if nxt == target:
+                    edges = [(a, b) for a, b in chain_edges if b in visited or b == target]
+                    return {
+                        "conclusion": "supported",
+                        "confidence": 0.90,
+                        "reasoning": (
+                            f"Hypothetical syllogism: {' and '.join(f'{a} implies {b}' for a, b in chain_edges)}; "
+                            f"therefore {start} implies {target}"
+                        ),
+                        "chain": [
+                            f"Premise: {a} implies {b}" for a, b in chain_edges
+                        ] + [f"Conclusion: {start} implies {target}"],
+                    }
+                stack.append(nxt)
+
+        # If start is in the graph but target is unreachable, the implication
+        # chain that starts at 'start' does not reach the target -> refuted.
+        return {
+            "conclusion": "refuted",
+            "confidence": 0.85,
+            "reasoning": (
+                f"The implication chain from {start} does not reach {target}; "
+                f"so {start} does not imply {target}"
+            ),
+            "chain": [
+                f"Start: {start}",
+                f"Reachable: {sorted(visited)}",
+                f"Target {target} not reachable -> implication refuted",
+            ],
+        }
 
     def _apply_syllogism(
         self, evidence: list[str], query: str
