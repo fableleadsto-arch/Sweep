@@ -1,0 +1,207 @@
+{
+  "pure_neural": {
+    "name": "pure_neural_reasoning",
+    "tasks": 200,
+    "accuracy_pct": 16.5,
+    "mean_latency_ms": 38.49,
+    "median_latency_ms": 34.78,
+    "std_latency_ms": 14.93,
+    "mean_confidence": 0.7571
+  },
+  "pure_neural_stats": {
+    "n": 200,
+    "correct": 33,
+    "wrong": 167,
+    "accuracy_pct": 16.5,
+    "ci_95_pct": 5.14,
+    "accuracy_range": "11.36% - 21.64%",
+    "mean_latency_ms": 38.49,
+    "median_latency_ms": 34.78,
+    "std_latency_ms": 14.93,
+    "mean_confidence": 0.7571,
+    "correct_mean_confidence": 0.8742,
+    "wrong_mean_confidence": 0.734
+  },
+  "difficulty_scaling": {
+    "level_1": {
+      "tasks": 200,
+      "accuracy_pct": 26.5
+    },
+    "level_2": {
+      "tasks": 200,
+      "accuracy_pct": 26.5
+    },
+    "level_3": {
+      "tasks": 200,
+      "accuracy_pct": 16.5
+    },
+    "level_4": {
+      "tasks": 200,
+      "accuracy_pct": 19.0
+    },
+    "level_5": {
+      "tasks": 200,
+      "accuracy_pct": 24.0
+    },
+    "level_6": {
+      "tasks": 200,
+      "accuracy_pct": 24.0
+    }
+  },
+  "parallel_branches": {
+    "branches_2": {
+      "tasks": 20,
+      "accuracy_pct": 0.0,
+      "mean_latency_ms": 84.31
+    },
+    "branches_4": {
+      "tasks": 20,
+      "accuracy_pct": 10.0,
+      "mean_latency_ms": 95.95
+    },
+    "branches_8": {
+      "tasks": 20,
+      "accuracy_pct": 45.0,
+      "mean_latency_ms": 107.6
+    },
+    "branches_16": {
+      "tasks": 20,
+      "accuracy_pct": 100.0,
+      "mean_latency_ms": 189.82
+    },
+    "branches_32": {
+      "tasks": 20,
+      "accuracy_pct": 100.0,
+      "mean_latency_ms": 221.93
+    },
+    "branches_64": {
+      "tasks": 20,
+      "accuracy_pct": 100.0,
+      "mean_latency_ms": 361.9
+    }
+  },
+  "distractor_resistance": {
+    "relevance_100pct": {
+      "tasks": 20,
+      "accuracy_pct": 0.0,
+      "mean_latency_ms": 96.54
+    },
+    "relevance_50pct": {
+      "tasks": 20,
+      "accuracy_pct": 0.0,
+      "mean_latency_ms": 105.97
+    },
+    "relevance_25pct": {
+      "tasks": 20,
+      "accuracy_pct": 0.0,
+      "mean_latency_ms": 124.0
+    },
+    "relevance_10pct": {
+      "tasks": 20,
+      "accuracy_pct": 0.0,
+      "mean_latency_ms": 172.45
+    }
+  },
+  "conflict_resolution": {
+    "name": "conflict_resolution",
+    "tasks": 120,
+    "accuracy_pct": 66.67,
+    "mean_latency_ms": 81.24,
+    "median_latency_ms": 75.55,
+    "std_latency_ms": 21.71,
+    "mean_confidence": 0.9082
+  },
+  "conflict_resolution_stats": {
+    "n": 120,
+    "correct": 80,
+    "wrong": 40,
+    "accuracy_pct": 66.67,
+    "ci_95_pct": 8.43,
+    "accuracy_range": "58.23% - 75.10%",
+    "mean_latency_ms": 81.24,
+    "median_latency_ms": 75.55,
+    "std_latency_ms": 21.71,
+    "mean_confidence": 0.9082,
+    "correct_mean_confidence": 0.9107,
+    "wrong_mean_confidence": 0.903
+  },
+  "novel_topology": {
+    "name": "novel_topology",
+    "tasks": 120,
+    "accuracy_pct": 0.0,
+    "mean_latency_ms": 78.12,
+    "median_latency_ms": 74.22,
+    "std_latency_ms": 22.1,
+    "mean_confidence": 0.8556
+  },
+  "novel_topology_stats": {
+    "n": 120,
+    "correct": 0,
+    "wrong": 120,
+    "accuracy_pct": 0.0,
+    "ci_95_pct": 0.0,
+    "accuracy_range": "0.00% - 0.00%",
+    "mean_latency_ms": 78.12,
+    "median_latency_ms": 74.22,
+    "std_latency_ms": 22.1,
+    "mean_confidence": 0.8556,
+    "correct_mean_confidence": 0.0,
+    "wrong_mean_confidence": 0.8556
+  },
+  "ablation": {
+    "full_mesh": {
+      "description": "Full Sweep neural mesh with all components",
+      "tasks": 200,
+      "accuracy_pct": 16.5,
+      "mean_latency_ms": 52.34
+    },
+    "reduced_mesh_75": {
+      "description": "75% of mesh cores active",
+      "tasks": 200,
+      "accuracy_pct": 16.5,
+      "mean_latency_ms": 51.8
+    },
+    "reduced_mesh_50": {
+      "description": "50% of mesh cores active",
+      "tasks": 200,
+      "accuracy_pct": 16.5,
+      "mean_latency_ms": 48.91
+    },
+    "reduced_mesh_25": {
+      "description": "25% of mesh cores active",
+      "tasks": 200,
+      "accuracy_pct": 16.5,
+      "mean_latency_ms": 45.22
+    },
+    "reduced_mesh_10": {
+      "description": "10% of mesh cores active",
+      "tasks": 200,
+      "accuracy_pct": 16.5,
+      "mean_latency_ms": 45.08
+    },
+    "single_path": {
+      "description": "Single processing path, no parallelism",
+      "tasks": 200,
+      "accuracy_pct": 16.5,
+      "mean_latency_ms": 44.68
+    }
+  },
+  "generalization": {
+    "tasks": 200,
+    "accuracy_pct": 18.0,
+    "stats": {
+      "n": 200,
+      "correct": 36,
+      "wrong": 164,
+      "accuracy_pct": 18.0,
+      "ci_95_pct": 5.32,
+      "accuracy_range": "12.68% - 23.32%",
+      "mean_latency_ms": 94.09,
+      "median_latency_ms": 87.07,
+      "std_latency_ms": 40.07,
+      "mean_confidence": 0.7652,
+      "correct_mean_confidence": 0.8791,
+      "wrong_mean_confidence": 0.7402
+    }
+  }
+}

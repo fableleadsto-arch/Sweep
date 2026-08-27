@@ -1,0 +1,43 @@
+{
+  "hardware": {
+    "cpu_count": 12,
+    "cpu_name": "Intel64 Family 6 Model 186 Stepping 3, GenuineIntel",
+    "ram_gb": 15.7,
+    "ram_available_gb": 1.0,
+    "disk_free_gb": 219.1,
+    "gpu": "NONE DETECTED",
+    "gpu_model": "NONE",
+    "gpu_vram_gb": 0
+  },
+  "os": {
+    "os": "Windows",
+    "os_version": "10.0.26200",
+    "kernel": "11",
+    "architecture": "AMD64",
+    "python_implementation": "CPython"
+  },
+  "software": {
+    "python": "3.13.7 (tags/v3.13.7:bcee1c3, Aug 14 2025, 14:15:11) [MSC v.1944 64 bit (AMD64)]",
+    "torch": "2.9.1+cu126",
+    "tensorflow": "2.21.0",
+    "numpy": "2.3.3",
+    "scipy": "1.16.2",
+    "scikit-learn": "NOT INSTALLED",
+    "transformers": "4.57.0",
+    "sentence_transformers": "5.1.2",
+    "onnxruntime": "1.23.2",
+    "cv2": "5.0.0",
+    "spacy": "3.8.15",
+    "whisper": "20250625"
+  },
+  "sweep_config": {
+    "git_commit": "c6fe41878461c534edee775d080d2d5626831e45",
+    "mesh_init_error": "No module named 'sweep_neural_mesh.neurons.mesh'",
+    "sweep_version": "0.1.0",
+    "neural_mesh_version": "9-stage-biological",
+    "precision": "float32",
+    "quantization": "none",
+    "max_reasoning_steps": 100,
+    "random_seed": 42
+  }
+}
