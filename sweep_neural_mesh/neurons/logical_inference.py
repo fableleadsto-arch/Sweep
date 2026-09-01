@@ -297,6 +297,8 @@ class LogicalInferenceEngine:
                     rf'does\s+not\s+{re.escape(con)}',
                     rf"doesn't\s+{re.escape(con)}",
                     rf'never\s+{re.escape(con)}',
+                    # Flexible: 'the ground is not wet' vs 'the ground is wet'
+                    rf'\b{re.escape(con.split()[0])}\b.*?\bnot\b.*?\b{re.escape(con.split()[-1])}\b',
                 ]
                 for pat in neg_patterns:
                     if re.search(pat, ev_clean) and ev_clean != cond.original_text.lower():

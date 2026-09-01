@@ -484,6 +484,43 @@ class WorldKnowledge:
             reasoning=reasoning,
         )
 
+    def load_training_knowledge(self) -> None:
+        """Load additional knowledge from the training module."""
+        try:
+            from .knowledge_training import KnowledgeTrainer
+            trainer = KnowledgeTrainer()
+            entries = trainer.get_all()
+
+            # Convert knowledge entries to entities and relations
+            for entry in entries:
+                # Add as entity if it's a factual fact
+                if entry.category in ("fact", "formula", "law", "process"):
+                    name = entry.topic.lower()
+                    if name not in self._entities:
+                        from .world_knowledge import Entity
+                        self._entities[name] = Entity(
+                            name=entry.topic,
+                            category=entry.domain,
+                            properties={"fact": entry.fact, "answer": entry.answer},
+                            abilities=[entry.fact],
+                            not_abilities=[],
+                        )
+
+                # Add relations from knowledge entries
+                if entry.category == "relation":
+                    # Parse relation from fact
+                    fact = entry.fact.lower()
+                    if " is " in fact:
+                        parts = fact.split(" is ", 1)
+                        if len(parts) == 2:
+                            self._relations.append(
+                                Relation(parts[0].strip(), "is", parts[1].strip(), entry.confidence)
+                            )
+
+            logger.info(f"Loaded {len(entries)} knowledge entries from training module")
+        except Exception as e:
+            logger.warning(f"Failed to load training knowledge: {e}")
+
     @property
     def entity_count(self) -> int:
         return len(self._entities)

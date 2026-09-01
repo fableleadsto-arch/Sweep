@@ -1,0 +1,30 @@
+{
+  "learned_facts": [
+    [
+      "what.*the.*capital",
+      "Tokyo",
+      0.8
+    ],
+    [
+      "what.*the.*capital",
+      "Tokyo",
+      0.8
+    ],
+    [
+      "how.*far.*the",
+      "384,400 km",
+      0.8
+    ],
+    [
+      "what.*dna",
+      "Deoxyribonucleic acid",
+      0.8
+    ]
+  ],
+  "failure_patterns": {
+    "factual": 3
+  },
+  "success_patterns": {
+    "multi_core": 10
+  }
+}

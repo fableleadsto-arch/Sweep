@@ -33,6 +33,7 @@ from __future__ import annotations
 import math
 import re
 from dataclasses import dataclass, field
+from difflib import SequenceMatcher
 from typing import Any
 
 
@@ -278,6 +279,9 @@ class Grounder:
         if re.search(r"Reasoning branches:", "\n".join(texts), re.IGNORECASE):
             self._ground_branches(texts)
 
+        # 5. Factual contradiction detection (same topic, conflicting values)
+        self._ground_contradictions(evidence)
+
     def _detect_claim(self, query: str, evidence: list[str]) -> str | None:
         joined = "\n".join([query] + evidence)
         m = re.search(r"Claim:\s*(.+)", joined, re.IGNORECASE)
@@ -305,6 +309,68 @@ class Grounder:
                 for m in re.finditer(rf"({_ENTITY})\s+is\s+{rel}\s+than\s+({_ENTITY})", t.lower()):
                     self._entail(self._atom(rel, (m.group(1).strip(),)),
                                  self._atom(rel, (m.group(2).strip(),)))
+
+    def _ground_contradictions(self, evidence: list[str]) -> None:
+        """Detect factual contradictions between evidence items.
+
+        Looks for pairs of statements about the same topic with conflicting values:
+          - 'X is at 3 PM' vs 'X is at 4 PM'
+          - 'The drug is effective' vs 'The drug is ineffective'
+          - 'All students passed' vs 'Some students failed'
+        """
+        if len(evidence) < 2:
+            return
+
+        negation_words = {"not", "no", "never", "none", "neither", "fail", "failed",
+                          "refute", "contradict", "deny", "false", "incorrect",
+                          "ineffective", "harmful", "dangerous", "worse", "decrease",
+                          "reduced", "loss", "lost", "broken"}
+        affirmation_words = {"is", "are", "was", "were", "has", "have", "can",
+                            "will", "does", "do", "effective", "safe", "good",
+                            "increase", "increased", "gain", "gained", "works"}
+
+        for i in range(len(evidence)):
+            for j in range(i + 1, len(evidence)):
+                e1 = evidence[i].lower().strip()
+                e2 = evidence[j].lower().strip()
+
+                # Extract subject-predicate pairs
+                # Pattern: 'X is Y' or 'X was Y' or 'X has Y'
+                sp1 = re.findall(r'\b(\w+)\s+(?:is|are|was|were|has|have|can|will|does|do)\s+([\w ]+)', e1)
+                sp2 = re.findall(r'\b(\w+)\s+(?:is|are|was|were|has|have|can|will|does|do)\s+([\w ]+)', e2)
+
+                for subj1, pred1 in sp1:
+                    for subj2, pred2 in sp2:
+                        # Same subject (or very similar)
+                        if subj1 == subj2 or SequenceMatcher(None, subj1, subj2).ratio() > 0.8:
+                            # Check for negation mismatch
+                            pred1_neg = any(w in pred1.split() for w in negation_words)
+                            pred2_neg = any(w in pred2.split() for w in negation_words)
+                            if pred1_neg != pred2_neg:
+                                # Found a contradiction
+                                atom1 = self._atom(f"fact_{subj1}", (pred1.strip(),))
+                                atom2 = self._atom(f"fact_{subj2}", (pred2.strip(),))
+                                self.bonds.append(Bond(
+                                    "contradict", atom1, atom2, 0.9,
+                                    source_text=f"{evidence[i][:80]} vs {evidence[j][:80]}",
+                                ))
+
+                # Also check for conflicting numeric values on the same topic
+                nums1 = re.findall(r'\b(\d+(?:\.\d+)?)\b', e1)
+                nums2 = re.findall(r'\b(\d+(?:\.\d+)?)\b', e2)
+                if nums1 and nums2:
+                    # Check topic overlap
+                    words1 = set(re.findall(r'\b\w{3,}\b', e1))
+                    words2 = set(re.findall(r'\b\w{3,}\b', e2))
+                    overlap = len(words1 & words2) / max(len(words1 | words2), 1)
+                    if overlap > 0.3 and nums1 != nums2:
+                        # Same topic, different numbers — potential contradiction
+                        atom1 = self._atom("conflict", (e1[:50],))
+                        atom2 = self._atom("conflict", (e2[:50],))
+                        self.bonds.append(Bond(
+                            "contradict", atom1, atom2, 0.7,
+                            source_text=f"Conflicting values: {nums1} vs {nums2}",
+                        ))
 
 
 # ════════════════════════════════════════════════════════════════════
@@ -442,6 +508,12 @@ class Reasoner:
 
         # ---- Q5: contradiction / consistency ----
         if "consistent" in ql or "contradiction" in ql:
+            # Check for explicit contradiction bonds
+            contradiction_bonds = [b for b in self._bonds if b.kind == "contradict"]
+            if contradiction_bonds:
+                details = [f"{b.src} contradicts {b.dst}" for b in contradiction_bonds[:3]]
+                return res("mixed", 0.85, f"found {len(contradiction_bonds)} contradiction(s): {'; '.join(details)}", "CONTRADICTION")
+            # Check for cycles in ordering graph
             oedges = self._ordering_graph()
             if self._has_directed_cycle(oedges):
                 return res("mixed", 0.95, "contradictory cyclic ordering", "CONTRADICTION")

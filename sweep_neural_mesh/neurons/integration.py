@@ -198,9 +198,9 @@ class ConsensusEngine:
 
     def __init__(
         self,
-        support_threshold: float = 0.40,
-        refutation_threshold: float = 0.25,
-        mixed_band: float = 0.12,
+        support_threshold: float = 0.35,
+        refutation_threshold: float = 0.28,
+        mixed_band: float = 0.08,
     ) -> None:
         self._support_threshold = support_threshold
         self._refutation_threshold = refutation_threshold
@@ -357,11 +357,11 @@ class ConsensusEngine:
         active_contradictions = sum(1 for s in contradiction_signals if s.confidence > 0.4)
 
         # ── Make the decision (direction-aware + relevance-aware) ──
+        # Priority: logic override > direction-based > confidence-based
 
         # LOGIC OVERRIDE: if formal logic found a strong conclusion, use it directly
         if use_logic and logical_result:
             decision = logical_result.conclusion
-            # Blend logical confidence with evidence confidence
             adjusted_confidence = (
                 0.6 * logical_result.confidence + 0.4 * adjusted_confidence
             )
@@ -375,27 +375,52 @@ class ConsensusEngine:
             decision = "insufficient"
             reasoning = "no evidence was provided to evaluate"
 
-        # Case 2: Evidence has mixed direction signals → mixed
+        # ── STRONG DIRECTION CASES (most important for accuracy) ──
+        # When evidence direction is clear and unambiguous, commit to a decision.
+        # Do NOT default to "mixed" just because some evidence is mixed or contradictory.
+
+        # Case 2: All directional evidence supports → supported (even if some evidence is mixed)
+        elif supports_count > 0 and refutes_count == 0 and adjusted_confidence >= 0.30:
+            decision = "supported"
+            reasoning = self._build_reasoning("supported", factors, supports_count, refutes_count)
+
+        # Case 3: All directional evidence refutes → refuted (even if some evidence is mixed)
+        elif refutes_count > 0 and supports_count == 0 and adjusted_confidence >= 0.25:
+            decision = "refuted"
+            reasoning = self._build_reasoning("refuted", factors, supports_count, refutes_count)
+
+        # Case 4: More evidence refutes than supports → refuted
+        elif refutes_count > supports_count and refutes_count >= 1:
+            decision = "refuted"
+            reasoning = self._build_reasoning("refuted", factors, supports_count, refutes_count)
+
+        # Case 5: More evidence supports than refutes → supported
+        elif supports_count > refutes_count and adjusted_confidence >= 0.30:
+            decision = "supported"
+            reasoning = self._build_reasoning("supported", factors, supports_count, refutes_count)
+
+        # Case 6: Equal support and refute → mixed (genuinely split)
+        elif supports_count == refutes_count and supports_count > 0:
+            decision = "mixed"
+            reasoning = self._build_reasoning("mixed", factors, supports_count, refutes_count)
+
+        # Case 7: Multiple active contradictions with supporting evidence → mixed
+        elif active_contradictions >= 2 and supports_count > 0:
+            decision = "mixed"
+            reasoning = f"{active_contradictions} contradictions found among {supports_count} supporting signals"
+
+        # Case 8: No directional evidence but high confidence from integration → supported
+        elif total_directional == 0 and adjusted_confidence >= 0.65 and contradicting_count == 0:
+            decision = "supported"
+            reasoning = self._build_reasoning("supported", factors, supports_count, refutes_count)
+
+        # Case 9: Mixed direction signals only (no clear support or refute)
         elif mixed_direction_count > 0 and supports_count == 0 and refutes_count == 0:
             decision = "mixed"
             reasoning = f"{mixed_direction_count} evidence items contain both supporting and refuting elements"
 
-        # Case 2b: Mixed direction signals alongside supporting evidence
-        # When some evidence is mixed, the answer is nuanced even if other evidence supports
-        elif mixed_direction_count > 0 and supports_count > 0 and refutes_count == 0:
-            # If more than half the directional evidence is mixed → mixed
-            if mixed_direction_count >= supports_count:
-                decision = "mixed"
-                reasoning = f"{mixed_direction_count} mixed evidence items outweigh {supports_count} supporting items"
-            else:
-                # Some mixed, some support → supported but acknowledge the nuance
-                decision = "supported"
-                reasoning = f"{supports_count} pieces of evidence support this, despite {mixed_direction_count} mixed signals"
-
-        # Case 3: Evidence exists but all neutral direction (no relevance to query)
-        elif total_directional == 0 and total_evidence > 0 and mixed_direction_count == 0:
-            # Only apply strict "insufficient" logic when evidence was actually analyzed
-            # (i.e., has support_direction metadata from EvidenceGatherer)
+        # Case 10: No directional evidence and low confidence → insufficient
+        elif total_directional == 0 and total_evidence > 0:
             all_neutral_processed = len(processed_evidence) > 0 and len(neutral_evidence) == len(processed_evidence)
             if all_neutral_processed:
                 decision = "insufficient"
@@ -403,9 +428,6 @@ class ConsensusEngine:
             elif active_contradictions > 0:
                 decision = "mixed"
                 reasoning = f"{active_contradictions} contradictory signals found in tangentially related evidence"
-            elif adjusted_confidence >= 0.7 and contradicting_count == 0:
-                decision = "supported"
-                reasoning = self._build_reasoning("supported", factors, supports_count, refutes_count)
             elif adjusted_confidence <= self._refutation_threshold:
                 decision = "refuted"
                 reasoning = f"weak evidence ({total_evidence} items) with low confidence ({adjusted_confidence:.2f})"
@@ -413,27 +435,7 @@ class ConsensusEngine:
                 decision = "insufficient"
                 reasoning = f"{total_evidence} evidence items are not directly relevant to the query"
 
-        # Case 4: More evidence refutes than supports → refuted
-        elif refutes_count > supports_count and refutes_count >= 1:
-            decision = "refuted"
-            reasoning = self._build_reasoning("refuted", factors, supports_count, refutes_count)
-
-        # Case 5: Active contradictions detected → mixed
-        elif active_contradictions >= 2 and supports_count > 0:
-            decision = "mixed"
-            reasoning = f"{active_contradictions} contradictions found among {supports_count} supporting signals"
-
-        # Case 6: Equal support and refute → mixed
-        elif supports_count == refutes_count and supports_count > 0:
-            decision = "mixed"
-            reasoning = self._build_reasoning("mixed", factors, supports_count, refutes_count)
-
-        # Case 7: More evidence supports → supported
-        elif supports_count > refutes_count and adjusted_confidence >= 0.35:
-            decision = "supported"
-            reasoning = self._build_reasoning("supported", factors, supports_count, refutes_count)
-
-        # Case 8: Confidence-based fallback
+        # Case 11: Confidence-based fallback
         elif adjusted_confidence >= self._support_threshold:
             decision = "supported"
             reasoning = self._build_reasoning("supported", factors, supports_count, refutes_count)
