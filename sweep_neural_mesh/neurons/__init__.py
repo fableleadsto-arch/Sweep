@@ -111,6 +111,32 @@ from .ner_engine import NEREngine, Entity, NERResult, get_ner_engine
 from .sentiment_engine import SentimentEngine, SentimentResult, SentimentLabel, get_sentiment_engine
 from .speech_recognition import SpeechRecognizer, TranscriptResult, TranscriptSegment, get_recognizer
 from .text_summarizer import TextSummarizer, SummaryResult, get_summarizer
+# ── New Capability Modules (Items 7, 13, 21, 22, 24, 26, 27) ──
+from .recursive_investigation import (
+    RecursiveInvestigationEngine, InvNode, InvEdge, NodeType, EdgeType,
+    InvestigationResult,
+)
+from .evidence_graph import (
+    EvidenceGraph, EvidenceNode, CorrelationEdge, EvidenceChain, GraphStats,
+    EvidenceType, CorrelationType,
+)
+from .location_intelligence import (
+    LocationIntelligence, Location, Coordinates, GeographicRelation,
+    LocationAnalysisResult, LocationEvidence,
+)
+from .search_strategy import (
+    SearchStrategyOptimizer, SearchPlan, SearchQuery, SearchResult,
+    StrategyState, KnowledgeAspect,
+)
+from .evidence_reports import (
+    EvidenceReportGenerator, InvestigationReport, Finding,
+)
+from .deduplication import (
+    DeduplicationEngine, ContentItem, DuplicateCluster, DeduplicationResult,
+)
+from .source_independence import (
+    SourceIndependenceTracker, SourceNode, SourceGroup, IndependenceReport,
+)
 
 __all__ = [
     "Signal", "SignalType", "Synapse", "SynapseType",
@@ -156,4 +182,16 @@ __all__ = [
     "SentimentEngine", "SentimentResult", "SentimentLabel", "get_sentiment_engine",
     "SpeechRecognizer", "TranscriptResult", "TranscriptSegment", "get_recognizer",
     "TextSummarizer", "SummaryResult", "get_summarizer",
+    # New Capability Modules
+    "RecursiveInvestigationEngine", "InvNode", "InvEdge", "NodeType", "EdgeType",
+    "InvestigationResult",
+    "EvidenceGraph", "EvidenceNode", "CorrelationEdge", "EvidenceChain", "GraphStats",
+    "EvidenceType", "CorrelationType",
+    "LocationIntelligence", "Location", "Coordinates", "GeographicRelation",
+    "LocationAnalysisResult", "LocationEvidence",
+    "SearchStrategyOptimizer", "SearchPlan", "SearchQuery", "SearchResult",
+    "StrategyState", "KnowledgeAspect",
+    "EvidenceReportGenerator", "InvestigationReport", "Finding",
+    "DeduplicationEngine", "ContentItem", "DuplicateCluster", "DeduplicationResult",
+    "SourceIndependenceTracker", "SourceNode", "SourceGroup", "IndependenceReport",
 ]

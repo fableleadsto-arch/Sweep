@@ -1,0 +1,19 @@
+{
+  "model": "relay-small",
+  "parameters": 10489088,
+  "training_steps": 200,
+  "final_loss": 3.7114734649658203,
+  "best_loss": 3.0987813472747803,
+  "duration_seconds": 293.6798717000056,
+  "training_data": 6900,
+  "new_domains": [
+    "recursive_investigation",
+    "evidence_graph",
+    "location_intelligence",
+    "search_strategy",
+    "evidence_reporting",
+    "deduplication",
+    "source_independence"
+  ],
+  "status": "trained"
+}

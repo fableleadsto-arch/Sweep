@@ -105,6 +105,14 @@ DEFAULT_DOMAINS = [
     "graph_reasoning",
     "causal_reasoning",
     "novel_structure_reasoning",
+    # New capability domains (Items 7, 13, 21, 22, 24, 26, 27)
+    "recursive_investigation",
+    "evidence_graph",
+    "location_intelligence",
+    "search_strategy",
+    "evidence_reporting",
+    "deduplication",
+    "source_independence",
 ]
 
 

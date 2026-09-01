@@ -1,0 +1,235 @@
+{
+  "overall_accuracy": 1.0,
+  "total_correct": 149,
+  "total_tests": 149,
+  "duration_seconds": 17.98633679980412,
+  "excellent_count": 32,
+  "good_count": 0,
+  "needs_work_count": 0,
+  "capabilities": {
+    "#1 Investigation Engine": {
+      "accuracy": 1.0,
+      "correct": 5,
+      "total_tests": 5,
+      "status": "EXCELLENT",
+      "avg_latency_ms": 343.46305998042226
+    },
+    "#2 Intent & Entity Recognition": {
+      "accuracy": 1.0,
+      "correct": 5,
+      "total_tests": 5,
+      "status": "EXCELLENT",
+      "avg_latency_ms": 695.7329400349408
+    },
+    "#3 Visual Person Analysis": {
+      "accuracy": 1.0,
+      "correct": 5,
+      "total_tests": 5,
+      "status": "EXCELLENT",
+      "avg_latency_ms": 0.0
+    },
+    "#4 Video Investigation": {
+      "accuracy": 1.0,
+      "correct": 5,
+      "total_tests": 5,
+      "status": "EXCELLENT",
+      "avg_latency_ms": 0.0
+    },
+    "#5 Voice / Audio Intelligence": {
+      "accuracy": 1.0,
+      "correct": 5,
+      "total_tests": 5,
+      "status": "EXCELLENT",
+      "avg_latency_ms": 0.0
+    },
+    "#6 Web Investigation": {
+      "accuracy": 1.0,
+      "correct": 5,
+      "total_tests": 5,
+      "status": "EXCELLENT",
+      "avg_latency_ms": 0.0
+    },
+    "#7 Recursive Investigation": {
+      "accuracy": 1.0,
+      "correct": 5,
+      "total_tests": 5,
+      "status": "EXCELLENT",
+      "avg_latency_ms": 0
+    },
+    "#8 Neural Mesh": {
+      "accuracy": 1.0,
+      "correct": 5,
+      "total_tests": 5,
+      "status": "EXCELLENT",
+      "avg_latency_ms": 0.0
+    },
+    "#9 Reasoning": {
+      "accuracy": 1.0,
+      "correct": 5,
+      "total_tests": 5,
+      "status": "EXCELLENT",
+      "avg_latency_ms": 8.775019971653819
+    },
+    "#10 Contradiction Detection": {
+      "accuracy": 1.0,
+      "correct": 5,
+      "total_tests": 5,
+      "status": "EXCELLENT",
+      "avg_latency_ms": 0.0
+    },
+    "#11 Evidence Correlation": {
+      "accuracy": 1.0,
+      "correct": 5,
+      "total_tests": 5,
+      "status": "EXCELLENT",
+      "avg_latency_ms": 0.0
+    },
+    "#12 Evidence Scoring": {
+      "accuracy": 1.0,
+      "correct": 5,
+      "total_tests": 5,
+      "status": "EXCELLENT",
+      "avg_latency_ms": 0.0
+    },
+    "#13 Evidence Graph": {
+      "accuracy": 1.0,
+      "correct": 5,
+      "total_tests": 5,
+      "status": "EXCELLENT",
+      "avg_latency_ms": 0.07707998156547546
+    },
+    "#14 Timeline Reconstruction": {
+      "accuracy": 1.0,
+      "correct": 5,
+      "total_tests": 5,
+      "status": "EXCELLENT",
+      "avg_latency_ms": 0.0
+    },
+    "#15 Hypothesis Testing": {
+      "accuracy": 1.0,
+      "correct": 3,
+      "total_tests": 3,
+      "status": "EXCELLENT",
+      "avg_latency_ms": 0.0
+    },
+    "#16 Adversarial Reasoning": {
+      "accuracy": 1.0,
+      "correct": 5,
+      "total_tests": 5,
+      "status": "EXCELLENT",
+      "avg_latency_ms": 0.0
+    },
+    "#17 Benchmarking": {
+      "accuracy": 1.0,
+      "correct": 5,
+      "total_tests": 5,
+      "status": "EXCELLENT",
+      "avg_latency_ms": 0.0
+    },
+    "#18 CPU-First Operation": {
+      "accuracy": 1.0,
+      "correct": 3,
+      "total_tests": 3,
+      "status": "EXCELLENT",
+      "avg_latency_ms": 0.0
+    },
+    "#19 Pretrained Model Mesh": {
+      "accuracy": 1.0,
+      "correct": 5,
+      "total_tests": 5,
+      "status": "EXCELLENT",
+      "avg_latency_ms": 0.0
+    },
+    "#20 OCR & Document Intelligence": {
+      "accuracy": 1.0,
+      "correct": 5,
+      "total_tests": 5,
+      "status": "EXCELLENT",
+      "avg_latency_ms": 0.0
+    },
+    "#21 Location Intelligence": {
+      "accuracy": 1.0,
+      "correct": 7,
+      "total_tests": 7,
+      "status": "EXCELLENT",
+      "avg_latency_ms": 0.23784288870436804
+    },
+    "#22 Search Strategy Optimization": {
+      "accuracy": 1.0,
+      "correct": 5,
+      "total_tests": 5,
+      "status": "EXCELLENT",
+      "avg_latency_ms": 0.0395200215280056
+    },
+    "#23 Multi-Core Architecture": {
+      "accuracy": 1.0,
+      "correct": 3,
+      "total_tests": 3,
+      "status": "EXCELLENT",
+      "avg_latency_ms": 0.0
+    },
+    "#24 Automatic Evidence Reports": {
+      "accuracy": 1.0,
+      "correct": 5,
+      "total_tests": 5,
+      "status": "EXCELLENT",
+      "avg_latency_ms": 0.022140005603432655
+    },
+    "#25 Uncertainty Awareness": {
+      "accuracy": 1.0,
+      "correct": 4,
+      "total_tests": 4,
+      "status": "EXCELLENT",
+      "avg_latency_ms": 0.0
+    },
+    "#26 Deduplication": {
+      "accuracy": 1.0,
+      "correct": 5,
+      "total_tests": 5,
+      "status": "EXCELLENT",
+      "avg_latency_ms": 0.25055999867618084
+    },
+    "#27 Source Independence": {
+      "accuracy": 1.0,
+      "correct": 5,
+      "total_tests": 5,
+      "status": "EXCELLENT",
+      "avg_latency_ms": 0.43532000854611397
+    },
+    "#28 Anomaly / Conflict Detection": {
+      "accuracy": 1.0,
+      "correct": 3,
+      "total_tests": 3,
+      "status": "EXCELLENT",
+      "avg_latency_ms": 0.0
+    },
+    "#29 Generalization": {
+      "accuracy": 1.0,
+      "correct": 5,
+      "total_tests": 5,
+      "status": "EXCELLENT",
+      "avg_latency_ms": 0.0
+    },
+    "#30 Self-Improvement Architecture": {
+      "accuracy": 1.0,
+      "correct": 3,
+      "total_tests": 3,
+      "status": "EXCELLENT",
+      "avg_latency_ms": 0.0
+    },
+    "#31 Safety Layer": {
+      "accuracy": 1.0,
+      "correct": 5,
+      "total_tests": 5,
+      "status": "EXCELLENT",
+      "avg_latency_ms": 0.0
+    },
+    "#32 Sweep UI": {
+      "accuracy": 1.0,
+      "correct": 3,
+      "total_tests": 3,
+      "status": "EXCELLENT",
+      "avg_latency_ms": 0.0
+    }
+  }
+}

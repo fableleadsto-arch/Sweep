@@ -1,0 +1,15 @@
+{
+  "model": "bert-base-uncased-finetuned",
+  "task": "evidence_classification",
+  "labels": [
+    "supports",
+    "refutes",
+    "neutral"
+  ],
+  "training_examples": 120,
+  "epochs": 10,
+  "final_loss": 0.356760760396719,
+  "final_accuracy": 1.0,
+  "duration_seconds": 332.8271313000005,
+  "status": "fine-tuned"
+}

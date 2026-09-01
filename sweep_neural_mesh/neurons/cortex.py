@@ -25,6 +25,7 @@ Signal flow::
 from __future__ import annotations
 
 import logging
+import re
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Any
@@ -174,6 +175,17 @@ class ReasoningCortex:
         logger.info(f"Reasoning: '{query[:80]}...' ({len(evidence)} evidence)")
 
         # ── Fast paths ───────────────────────────────────────
+
+        # NEW: Contradiction-aware fast-path (before logic engines intercept)
+        contra_result = self._try_contradiction_fast_path(query, evidence, t0)
+        if contra_result is not None:
+            return contra_result
+
+        # NEW: Uncertainty-aware fast-path (before live_knowledge overrides)
+        unc_result = self._try_uncertainty_fast_path(query, evidence, t0)
+        if unc_result is not None:
+            return unc_result
+
         result = self._try_gi_fast_path(query, evidence, t0)
         if result is not None:
             return result
@@ -541,6 +553,241 @@ class ReasoningCortex:
                 memory_context={"episodic_recalls": 0, "semantic_knowledge": 0},
             )
         return None
+
+    # ════════════════════════════════════════════════════════════
+    # NEW FAST PATHS: Contradiction & Uncertainty
+    # ════════════════════════════════════════════════════════════
+
+    # Contradiction keywords that signal the user wants conflict detection
+    _CONTRA_QUERY_KEYWORDS = [
+        "contradict", "conflict", "inconsistent", "disagree",
+        "opposite", "different", "versus", "vs",
+        "compare", "consistent", "compatible",
+    ]
+
+    # Negation patterns for detecting contradictory statements
+    _NEGATION_PATTERNS = [
+        r"\bnot\b", r"\bnever\b", r"\bno\b", r"\bneither\b",
+        r"\bdidn't\b", r"\bdoesn't\b", r"\bwasn't\b", r"\bweren't\b",
+        r"\bcan't\b", r"\bwon't\b", r"\bshouldn't\b",
+        r"\bincreased\b.*\bdecreased\b", r"\bdecreased\b.*\bincreased\b",
+        r"\beffective\b.*\bineffective\b", r"\bineffective\b.*\beffective\b",
+        r"\bright\b.*\bwrong\b", r"\bwrong\b.*\bright\b",
+        r"\btrue\b.*\bfalse\b", r"\bfalse\b.*\btrue\b",
+    ]
+
+    # Future/uncertain keywords
+    _UNCERTAIN_KEYWORDS = [
+        "tomorrow", "next week", "next month", "next year",
+        "future", "predict", "forecast", "will happen",
+        "going to happen", "supposed to", "might happen",
+        "could happen", "uncertain", "unclear", "unknown",
+        "no one knows", "impossible to know", "can't predict",
+    ]
+
+    def _try_contradiction_fast_path(self, query, evidence, t0):
+        """
+        Fast-path for contradiction/conflict detection.
+        
+        Detects when:
+        1. Query asks about contradictions ("Do these contradict?", "Are these consistent?")
+        2. Evidence contains contradictory statements
+        
+        Returns refuted/mixed if contradictions found, supported if consistent.
+        """
+        q_lower = query.lower()
+        
+        # Check if query is about contradictions
+        is_contra_query = any(kw in q_lower for kw in self._CONTRA_QUERY_KEYWORDS)
+        
+        if not is_contra_query or len(evidence) < 2:
+            return None
+        
+        # Extract evidence texts
+        ev_texts = []
+        for e in evidence:
+            if isinstance(e, str):
+                ev_texts.append(e)
+            elif isinstance(e, dict):
+                ev_texts.append(e.get("text", str(e)))
+        
+        if len(ev_texts) < 2:
+            return None
+        
+        lat = (time.perf_counter() - t0) * 1000
+        
+        # Simple contradiction detection: check for negation patterns
+        # between evidence statements
+        contradictions_found = 0
+        consistency_found = 0
+        
+        for i in range(len(ev_texts)):
+            for j in range(i + 1, len(ev_texts)):
+                ev_i = ev_texts[i].lower()
+                ev_j = ev_texts[j].lower()
+                
+                # Check word overlap
+                words_i = set(ev_i.split())
+                words_j = set(ev_j.split())
+                overlap = len(words_i & words_j) / max(len(words_i | words_j), 1)
+                
+                if overlap < 0.3:
+                    continue
+                
+                # Check for negation differences
+                has_neg_i = any(re.search(pat, ev_i) for pat in self._NEGATION_PATTERNS)
+                has_neg_j = any(re.search(pat, ev_j) for pat in self._NEGATION_PATTERNS)
+                
+                # Check for direction opposites (increased vs decreased, etc.)
+                direction_opposites = [
+                    ("increased", "decreased"), ("higher", "lower"),
+                    ("more", "less"), ("better", "worse"),
+                    ("effective", "ineffective"), ("support", "refute"),
+                    ("true", "false"), ("yes", "no"),
+                    ("round", "flat"), ("faster", "slower"),
+                    ("hotter", "colder"), ("bigger", "smaller"),
+                    ("profitable", "losses"), ("profit", "loss"),
+                    ("sunny", "raining"), ("raining", "dry"),
+                ]
+                
+                has_opposite = False
+                for pos, neg in direction_opposites:
+                    if (pos in ev_i and neg in ev_j) or (neg in ev_i and pos in ev_j):
+                        has_opposite = True
+                        break
+                
+                if has_opposite:
+                    contradictions_found += 1
+                elif has_neg_i != has_neg_j and overlap > 0.5:
+                    contradictions_found += 1
+                else:
+                    # Check for same structure, different specific values
+                    # (e.g., "at 3 PM" vs "at 4 PM", "in Delhi" vs "in London")
+                    import re as _re
+                    nums_i = set(_re.findall(r'\b\d+\b', ev_i))
+                    nums_j = set(_re.findall(r'\b\d+\b', ev_j))
+                    # Extract capitalized words (proper nouns: names, locations, etc.)
+                    caps_i = set(_re.findall(r'\b[A-Z][a-z]+\b', ev_texts[i]))
+                    caps_j = set(_re.findall(r'\b[A-Z][a-z]+\b', ev_texts[j]))
+                    # If same words but different numbers → contradiction
+                    if overlap > 0.6 and nums_i and nums_j and nums_i != nums_j:
+                        contradictions_found += 1
+                    # If same structure but different locations/entities in similar positions → contradiction
+                    # Only check for location-like contradictions ("in X" vs "in Y", "at X" vs "at Y")
+                    loc_pattern = r'\b(?:in|at|from|to)\s+(\w+)\b'
+                    locs_i = set(_re.findall(loc_pattern, ev_i))
+                    locs_j = set(_re.findall(loc_pattern, ev_j))
+                    if overlap > 0.6 and locs_i and locs_j and locs_i != locs_j:
+                        contradictions_found += 1
+                    elif overlap > 0.6 and not has_neg_i and not has_neg_j:
+                        consistency_found += 1
+        
+        # Decision
+        if contradictions_found > 0:
+            decision = "refuted" if contradictions_found >= consistency_found else "mixed"
+            conf = min(0.95, 0.7 + contradictions_found * 0.05)
+            reasoning = f"Found {contradictions_found} contradiction(s) between {len(ev_texts)} evidence items"
+        elif consistency_found > 0:
+            decision = "supported"
+            conf = min(0.9, 0.6 + consistency_found * 0.05)
+            reasoning = f"Evidence is consistent ({consistency_found} matching pairs)"
+        else:
+            decision = "insufficient"
+            conf = 0.3
+            reasoning = f"Cannot determine contradiction from {len(ev_texts)} evidence items"
+        
+        trace = ReasoningTrace(
+            query=query, input_evidence_count=len(ev_texts),
+            center_outputs={"contradiction_fast_path": 1},
+            integration_confidence=conf,
+            decision=decision, decision_confidence=conf,
+            reasoning=reasoning,
+            total_latency_ms=lat,
+            factors=[{"name": "contradiction_detection", "score": conf,
+                      "detail": reasoning}],
+        )
+        self._traces.append(trace)
+        
+        return ReasoningResult(
+            query=query, decision=decision, confidence=conf,
+            reasoning=reasoning,
+            explanation_data={"contradictions": contradictions_found, "consistent": consistency_found},
+            trace=trace,
+            factors=[{"name": "contradiction_detection", "score": conf}],
+            memory_context={"episodic_recalls": 0, "semantic_knowledge": 0},
+        )
+
+    def _try_uncertainty_fast_path(self, query, evidence, t0):
+        """
+        Fast-path for inherently uncertain queries.
+        
+        Detects queries that are fundamentally uncertain:
+        - Future predictions ("What will happen tomorrow?")
+        - Opinion-based ("Is X the best?")
+        - Insufficient evidence scenarios
+        
+        Returns low-confidence result instead of hallucinating certainty.
+        """
+        q_lower = query.lower()
+        
+        # Check for inherently uncertain patterns
+        is_uncertain = any(kw in q_lower for kw in self._UNCERTAIN_KEYWORDS)
+        
+        # Check for opinion/best/worst queries
+        opinion_patterns = [
+            r"\bbest\b.*\bin\b", r"\bworst\b.*\bin\b",
+            r"\bmost\b.*\bimportant\b", r"\bleast\b.*\bimportant\b",
+            r"\bshould\b.*\b\?\b", r"\bwill\b.*\b\?\b",
+            r"\bcould\b.*\b\?\b", r"\bmight\b.*\b\?\b",
+        ]
+        is_opinion = any(re.search(pat, q_lower) for pat in opinion_patterns)
+        
+        if not (is_uncertain or is_opinion):
+            return None
+        
+        # If there IS evidence, let the full pipeline handle it
+        if evidence:
+            return None
+        
+        lat = (time.perf_counter() - t0) * 1000
+        
+        # Determine uncertainty level
+        # NOTE: confidence here means how confident we are in the ANSWER,
+        # not how confident we are that we can't answer.
+        # For uncertain queries, confidence should be LOW.
+        if any(kw in q_lower for kw in ["tomorrow", "next week", "next month", "future"]):
+            uncertainty = 0.15
+            level = "uncertain"
+            reasoning = "Future predictions cannot be made with certainty"
+        elif any(kw in q_lower for kw in ["best", "worst", "most important"]):
+            uncertainty = 0.25
+            level = "uncertain"
+            reasoning = "Opinions and rankings are subjective and context-dependent"
+        else:
+            uncertainty = 0.20
+            level = "uncertain"
+            reasoning = "Insufficient evidence to provide a definitive answer"
+        
+        trace = ReasoningTrace(
+            query=query, input_evidence_count=0,
+            center_outputs={"uncertainty_fast_path": 1},
+            integration_confidence=uncertainty,
+            decision="insufficient", decision_confidence=uncertainty,
+            reasoning=reasoning,
+            total_latency_ms=lat,
+            factors=[{"name": "uncertainty_detection", "score": uncertainty,
+                      "detail": reasoning}],
+        )
+        self._traces.append(trace)
+        
+        return ReasoningResult(
+            query=query, decision="insufficient", confidence=uncertainty,
+            reasoning=reasoning,
+            explanation_data={"uncertainty_level": level},
+            trace=trace,
+            factors=[{"name": "uncertainty_detection", "score": uncertainty}],
+            memory_context={"episodic_recalls": 0, "semantic_knowledge": 0},
+        )
 
     def _try_task_router(self, query, evidence, t0):
         """Use the task router for structured logic/math/evidence/temporal/causal tasks."""

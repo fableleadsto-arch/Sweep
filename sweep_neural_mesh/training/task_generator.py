@@ -801,6 +801,231 @@ class TaskGenerator:
         )
 
     # ══════════════════════════════════════════════════════════════════
+    # NEW CAPABILITY DOMAINS (Items 7, 13, 21, 22, 24, 26, 27)
+    # ══════════════════════════════════════════════════════════════════
+
+    # ── #7 Recursive Investigation ──
+    def _gen_recursive_investigation(self, domain: str, difficulty: int, seed: int) -> Task:
+        rng = random.Random(seed)
+        people = ["John Smith", "Alice Chen", "Bob Wilson", "Carol Davis", "Eve Johnson"]
+        orgs = ["TechCorp", "DataInc", "ResearchLab", "MediaGroup", "FinServ"]
+        cities = ["Delhi", "London", "Tokyo", "New York", "Berlin"]
+        events = ["conference", "summit", "workshop", "meeting", "launch"]
+
+        person = rng.choice(people)
+        org = rng.choice(orgs)
+        city = rng.choice(cities)
+        event = rng.choice(events)
+
+        if difficulty <= 2:
+            text = f"{person} works at {org} in {city}." \
+                   f"\n\nWhat entities are connected to {person}?\nList all connected entities."
+            answer = f"{org}, {city}"
+        elif difficulty <= 4:
+            text = f"{person} works at {org} in {city}. " \
+                   f"{org} sponsored a {event}. " \
+                   f"The {event} was held in {rng.choice(cities)}." \
+                   f"\n\nTraverse the investigation graph starting from {person}. " \
+                   f"How many entities can be reached within 2 hops?"
+            answer = "3"
+        else:
+            text = f"{person} works at {org} in {city}. " \
+                   f"{org} sponsored a {event}. " \
+                   f"The {event} featured {rng.choice(people)}. " \
+                   f"{rng.choice(people)} is from {rng.choice(cities)}." \
+                   f"\n\nBuild the investigation graph and identify all leaf nodes (entities with no outgoing connections)."
+            answer = rng.choice(cities)
+
+        return Task(
+            task_id=self._next_id(domain), domain=domain, difficulty=difficulty,
+            input=text, expected_output=answer, reasoning_type="graph_traversal",
+            generation_seed=seed, verification_method="graph_traversal",
+        )
+
+    # ── #13 Evidence Graph ──
+    def _gen_evidence_graph(self, domain: str, difficulty: int, seed: int) -> Task:
+        rng = random.Random(seed)
+        claims = [
+            ("Person was at Location A", "Person was at Location B", "CONTRADICTS"),
+            ("Drug is effective", "Drug shows results", "CORROBORATES"),
+            ("Revenue increased 15%", "Revenue decreased 15%", "CONTRADICTS"),
+            ("Study confirms X", "Research supports X", "CORROBORATES"),
+            ("Person works at Company A", "Person employed by Company A", "CORROBORATES"),
+        ]
+
+        claim_pair = rng.choice(claims)
+        ev1, ev2, expected_rel = claim_pair
+
+        if difficulty <= 2:
+            text = f"Evidence A: {ev1}\nEvidence B: {ev2}\n\n" \
+                   f"What is the relationship between these two pieces of evidence?\n" \
+                   f"Answer CORROBORATES, CONTRADICTS, or UNRELATED."
+            answer = expected_rel
+        elif difficulty <= 4:
+            text = f"Evidence A: {ev1}\nEvidence B: {ev2}\n" \
+                   f"Evidence C: {rng.choice([c[0] for c in claims])}\n\n" \
+                   f"Build an evidence graph. Which evidence nodes form a cluster?\n" \
+                   f"List the cluster members."
+            answer = f"A, B"
+        else:
+            text = f"Evidence A: {ev1}\nEvidence B: {ev2}\n" \
+                   f"Evidence C: {rng.choice([c[0] for c in claims])}\n" \
+                   f"Evidence D: {rng.choice([c[1] for c in claims])}\n\n" \
+                   f"Compute evidence importance (PageRank). Which node has highest importance?\n" \
+                   f"Answer with the node label."
+            answer = "A"
+
+        return Task(
+            task_id=self._next_id(domain), domain=domain, difficulty=difficulty,
+            input=text, expected_output=answer, reasoning_type="evidence_graph",
+            generation_seed=seed, verification_method="graph_traversal",
+        )
+
+    # ── #21 Location Intelligence ──
+    def _gen_location_intelligence(self, domain: str, difficulty: int, seed: int) -> Task:
+        rng = random.Random(seed)
+        locations = [
+            ("Delhi", 28.7, 77.1, "India"),
+            ("London", 51.5, -0.1, "UK"),
+            ("Tokyo", 35.7, 139.7, "Japan"),
+            ("New York", 40.7, -74.0, "USA"),
+            ("Berlin", 52.5, 13.4, "Germany"),
+        ]
+
+        loc1, loc2 = rng.sample(locations, 2)
+
+        if difficulty <= 2:
+            text = f"The event took place in {loc1[0]}, {loc1[3]}.\n" \
+                   f"\nWhat country is this location in?\nAnswer with the country name."
+            answer = loc1[3]
+        elif difficulty <= 4:
+            text = f"Person was seen in {loc1[0]}, {loc1[3]} on Monday.\n" \
+                   f"Person was seen in {loc2[0]}, {loc2[3]} on Tuesday.\n" \
+                   f"\nAre these locations in the same region?\nAnswer YES or NO."
+            answer = "NO" if loc1[3] != loc2[3] else "YES"
+        else:
+            text = f"Person was seen in {loc1[0]}, {loc1[3]} on Monday.\n" \
+                   f"Person was seen in {loc2[0]}, {loc2[3]} on Tuesday.\n" \
+                   f"\nCompute the approximate distance between these locations.\n" \
+                   f"Is it feasible to travel between them in 24 hours?\nAnswer YES or NO."
+            answer = "NO"  # Different continents
+
+        return Task(
+            task_id=self._next_id(domain), domain=domain, difficulty=difficulty,
+            input=text, expected_output=answer, reasoning_type="geographic",
+            generation_seed=seed, verification_method="location_check",
+        )
+
+    # ── #22 Search Strategy ──
+    def _gen_search_strategy(self, domain: str, difficulty: int, seed: int) -> Task:
+        rng = random.Random(seed)
+        targets = ["John Smith", "TechCorp Inc", "Project Alpha"]
+        target = rng.choice(targets)
+
+        known_aspects = rng.sample(["identity", "location", "affiliation", "timeline"], k=min(difficulty, 3))
+        unknown_aspects = ["activities", "associates", "online_presence"][:max(1, 5-difficulty)]
+
+        text = f"Investigation target: {target}\n\n"
+        text += "Known aspects:\n"
+        for a in known_aspects:
+            text += f"  - {a}: CONFIRMED\n"
+        text += "\nUnknown aspects:\n"
+        for a in unknown_aspects:
+            text += f"  - {a}: NO DATA\n"
+        text += f"\n\nWhat should be the next search priority?\n"
+        text += f"Answer with the aspect name that needs the most attention."
+        answer = unknown_aspects[0]
+
+        return Task(
+            task_id=self._next_id(domain), domain=domain, difficulty=difficulty,
+            input=text, expected_output=answer, reasoning_type="search_planning",
+            generation_seed=seed, verification_method="aspect_match",
+        )
+
+    # ── #24 Evidence Reports ──
+    def _gen_evidence_reporting(self, domain: str, difficulty: int, seed: int) -> Task:
+        rng = random.Random(seed)
+        n_supporting = rng.randint(1, 5)
+        n_contradicting = rng.randint(0, 2) if difficulty >= 3 else 0
+
+        text = f"Investigation: Is X effective?\n\n"
+        text += f"Supporting evidence: {n_supporting} sources\n"
+        text += f"Contradicting evidence: {n_contradicting} sources\n"
+        text += f"Independent sources: {n_supporting + n_contradicting}\n\n"
+        text += f"\nWhat is the overall confidence level?\n"
+        text += f"Answer: CONFIRMED, LIKELY, POSSIBLE, UNCERTAIN, or CONTRADICTED."
+
+        if n_contradicting > n_supporting:
+            answer = "CONTRADICTED"
+        elif n_supporting >= 4 and n_contradicting == 0:
+            answer = "CONFIRMED"
+        elif n_supporting >= 2:
+            answer = "LIKELY"
+        elif n_supporting >= 1:
+            answer = "POSSIBLE"
+        else:
+            answer = "UNCERTAIN"
+
+        return Task(
+            task_id=self._next_id(domain), domain=domain, difficulty=difficulty,
+            input=text, expected_output=answer, reasoning_type="report_assessment",
+            generation_seed=seed, verification_method="confidence_check",
+        )
+
+    # ── #26 Deduplication ──
+    def _gen_deduplication(self, domain: str, difficulty: int, seed: int) -> Task:
+        rng = random.Random(seed)
+        sources = [
+            ("BBC News", "Company X reported record profits today.", "major_news"),
+            ("Reuters", "Company X announced record-breaking profits.", "wire_service"),
+            ("Blog", "Wow! Company X just made record profits!", "blog"),
+            ("Twitter", "Company X profits are through the roof!", "social_media"),
+            ("CNN", "Company X achieves historic profit milestone.", "major_news"),
+        ]
+
+        selected = rng.sample(sources, min(difficulty + 2, len(sources)))
+
+        text = "Sources:\n"
+        for i, (name, content, stype) in enumerate(selected, 1):
+            text += f"  {i}. [{name}] ({stype}): {content}\n"
+        text += f"\n\nHow many truly independent sources are there?\n"
+        text += f"(Consider that news agencies may share the same underlying source)\n"
+        text += f"Answer with a number."
+
+        # Count unique source types
+        unique_types = len({s[2] for s in selected})
+        answer = str(unique_types)
+
+        return Task(
+            task_id=self._next_id(domain), domain=domain, difficulty=difficulty,
+            input=text, expected_output=answer, reasoning_type="deduplication",
+            generation_seed=seed, verification_method="count_unique",
+        )
+
+    # ── #27 Source Independence ──
+    def _gen_source_independence(self, domain: str, difficulty: int, seed: int) -> Task:
+        rng = random.Random(seed)
+        origins = ["Press Release X", "Official Statement Y"]
+        origin = rng.choice(origins)
+
+        n_derived = rng.randint(2, 4)
+        derived = [f"Article {chr(65+i)}" for i in range(n_derived)]
+
+        text = f"Origin source: {origin}\n\n"
+        text += f"Derived articles: {', '.join(derived)}\n"
+        text += f"All derived articles contain similar language and facts.\n\n"
+        text += f"How many independent confirmations does this represent?\n"
+        text += f"(Articles from the same origin count as one)\n"
+        text += f"Answer with a number."
+        answer = "1"
+
+        return Task(
+            task_id=self._next_id(domain), domain=domain, difficulty=difficulty,
+            input=text, expected_output=answer, reasoning_type="source_independence",
+            generation_seed=seed, verification_method="independence_count",
+        )
+
+    # ══════════════════════════════════════════════════════════════════
     # HELPERS
     # ══════════════════════════════════════════════════════════════════
 
