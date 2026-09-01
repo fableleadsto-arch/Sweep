@@ -1,0 +1,44 @@
+{
+  "results": {
+    "recursive_investigation": {
+      "accuracy": 1.0,
+      "correct": 5,
+      "total": 5
+    },
+    "evidence_graph": {
+      "accuracy": 0.75,
+      "correct": 3,
+      "total": 4
+    },
+    "location_intelligence": {
+      "accuracy": 1.0,
+      "correct": 7,
+      "total": 7
+    },
+    "search_strategy": {
+      "accuracy": 1.0,
+      "correct": 5,
+      "total": 5
+    },
+    "evidence_reporting": {
+      "accuracy": 1.0,
+      "correct": 4,
+      "total": 4
+    },
+    "deduplication": {
+      "accuracy": 1.0,
+      "correct": 5,
+      "total": 5
+    },
+    "source_independence": {
+      "accuracy": 0.8,
+      "correct": 4,
+      "total": 5
+    }
+  },
+  "overall_accuracy": 0.9428571428571428,
+  "total_correct": 33,
+  "total_tests": 35,
+  "duration_seconds": 0.07759619993157685,
+  "capabilities_status": "all_32_implemented_and_trained"
+}
