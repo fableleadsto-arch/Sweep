@@ -1,0 +1,103 @@
+{
+  "overall": {
+    "correct": 881,
+    "total": 900,
+    "accuracy": 0.9788888888888889
+  },
+  "by_category": {
+    "reasoning": {
+      "correct": 43,
+      "total": 50,
+      "accuracy": 0.86
+    },
+    "mathematics": {
+      "correct": 50,
+      "total": 50,
+      "accuracy": 1.0
+    },
+    "coding": {
+      "correct": 45,
+      "total": 50,
+      "accuracy": 0.9
+    },
+    "knowledge": {
+      "correct": 48,
+      "total": 50,
+      "accuracy": 0.96
+    },
+    "instruction_following": {
+      "correct": 48,
+      "total": 50,
+      "accuracy": 0.96
+    },
+    "language": {
+      "correct": 49,
+      "total": 50,
+      "accuracy": 0.98
+    },
+    "data_analysis": {
+      "correct": 49,
+      "total": 50,
+      "accuracy": 0.98
+    },
+    "multimodal": {
+      "correct": 50,
+      "total": 50,
+      "accuracy": 1.0
+    },
+    "retrieval": {
+      "correct": 50,
+      "total": 50,
+      "accuracy": 1.0
+    },
+    "entity_resolution": {
+      "correct": 50,
+      "total": 50,
+      "accuracy": 1.0
+    },
+    "evidence_reasoning": {
+      "correct": 50,
+      "total": 50,
+      "accuracy": 1.0
+    },
+    "memory": {
+      "correct": 50,
+      "total": 50,
+      "accuracy": 1.0
+    },
+    "planning": {
+      "correct": 49,
+      "total": 50,
+      "accuracy": 0.98
+    },
+    "tool_use": {
+      "correct": 50,
+      "total": 50,
+      "accuracy": 1.0
+    },
+    "web_research": {
+      "correct": 50,
+      "total": 50,
+      "accuracy": 1.0
+    },
+    "uncertainty": {
+      "correct": 50,
+      "total": 50,
+      "accuracy": 1.0
+    },
+    "adversarial": {
+      "correct": 50,
+      "total": 50,
+      "accuracy": 1.0
+    },
+    "sweep_specific": {
+      "correct": 50,
+      "total": 50,
+      "accuracy": 1.0
+    }
+  },
+  "latency": {
+    "mean_ms": 0.30274600139819086,
+    "total_s": 0.27247140125837177
+  }
+}

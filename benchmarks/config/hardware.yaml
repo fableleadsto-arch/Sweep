@@ -1,0 +1,26 @@
+# Hardware Configuration for Environment Reporting
+# =================================================
+
+environment:
+  report_before_run: true
+  fields:
+    - date
+    - os
+    - cpu
+    - gpu
+    - vram
+    - ram
+    - python_version
+    - cuda_version
+    - framework
+    - sweep_commit
+    - sweep_neural_engine_version
+    - model
+    - parameters
+    - quantization
+    - context_length
+    - temperature
+    - tools_enabled
+    - internet_enabled
+    - retrieval_enabled
+    - benchmark_version

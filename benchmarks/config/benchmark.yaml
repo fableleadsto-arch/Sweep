@@ -1,0 +1,291 @@
+# Sweep Neural Engine Scientific Benchmark Configuration
+# ======================================================
+# This file controls the entire benchmark framework.
+
+benchmark:
+  name: "Sweep Neural Engine Scientific Benchmark"
+  version: "2.0.0"
+  description: "Rigorous, reproducible scientific evaluation of the Sweep Neural Engine"
+  integrity_check: true
+  anti_leak: true
+
+# ── Run Modes ──
+suites:
+  full:
+    description: "Complete benchmark suite"
+    tasks: all
+  reasoning:
+    description: "Reasoning-focused tasks"
+    tasks: [reasoning, mathematics, planning, uncertainty]
+  multimodal:
+    description: "Multimodal perception tasks"
+    tasks: [multimodal, data_analysis]
+  sweep_specific:
+    description: "Sweep-specific private benchmark"
+    tasks: [sweep_specific, entity_resolution, evidence_reasoning]
+  quick:
+    description: "Quick validation run"
+    tasks: [reasoning, mathematics, coding]
+    cases_per_task: 50
+
+# ── Task Categories ──
+tasks:
+  reasoning:
+    enabled: true
+    weight: 0.15
+    cases: 200
+    difficulty_distribution: {easy: 0.4, medium: 0.35, hard: 0.25}
+    subcategories:
+      - deductive
+      - inductive
+      - abductive
+      - analogical
+      - counterfactual
+      - common_sense
+      - causal
+
+  mathematics:
+    enabled: true
+    weight: 0.10
+    cases: 200
+    subcategories:
+      - arithmetic
+      - algebra
+      - geometry
+      - statistics
+      - word_problems
+      - symbolic
+      - competition
+
+  coding:
+    enabled: true
+    weight: 0.10
+    cases: 200
+    subcategories:
+      - code_generation
+      - debugging
+      - comprehension
+      - refactoring
+      - test_generation
+      - repository_level
+
+  knowledge:
+    enabled: true
+    weight: 0.10
+    cases: 200
+    subcategories:
+      - factual
+      - scientific
+      - historical
+      - geographical
+      - cultural
+      - technical
+
+  instruction_following:
+    enabled: true
+    weight: 0.10
+    cases: 150
+    subcategories:
+      - formatting
+      - constraints
+      - nested_requirements
+      - prohibited_content
+      - schema_compliance
+      - ordering
+
+  language:
+    enabled: true
+    weight: 0.05
+    cases: 150
+    subcategories:
+      - comprehension
+      - summarization
+      - paraphrasing
+      - translation
+      - ambiguity_resolution
+      - grammar
+
+  data_analysis:
+    enabled: true
+    weight: 0.10
+    cases: 100
+    subcategories:
+      - trend_identification
+      - statistical_calculation
+      - anomaly_detection
+      - correlation_explanation
+      - missing_information
+      - calculation
+
+  multimodal:
+    enabled: true
+    weight: 0.15
+    cases: 100
+    subcategories:
+      - image_understanding
+      - document_analysis
+      - scene_description
+      - text_extraction
+      - image_comparison
+
+  retrieval:
+    enabled: true
+    weight: 0.10
+    cases: 100
+    subcategories:
+      - direct_retrieval
+      - multi_hop
+      - query_expansion
+      - source_triangulation
+
+  entity_resolution:
+    enabled: true
+    weight: 0.05
+    cases: 100
+    subcategories:
+      - same_entity
+      - different_entity
+      - insufficient_evidence
+      - alias_resolution
+      - conflicting_records
+
+  evidence_reasoning:
+    enabled: true
+    weight: 0.10
+    cases: 100
+    subcategories:
+      - direct_observation
+      - supported
+      - weakly_supported
+      - contradicted
+      - unknown
+
+  memory:
+    enabled: true
+    weight: 0.05
+    cases: 100
+    subcategories:
+      - short_term
+      - delayed_retrieval
+      - interference
+      - contradiction_handling
+      - false_memory_resistance
+
+  planning:
+    enabled: true
+    weight: 0.05
+    cases: 50
+    subcategories:
+      - multi_step
+      - dependency_handling
+      - failure_recovery
+      - efficiency
+
+  tool_use:
+    enabled: true
+    weight: 0.05
+    cases: 50
+    subcategories:
+      - correct_selection
+      - unnecessary_calls
+      - failure_recovery
+      - efficiency
+
+  web_research:
+    enabled: false  # Requires internet access
+    weight: 0.05
+    cases: 50
+    subcategories:
+      - closed_world
+      - open_world
+      - source_quality
+
+  uncertainty:
+    enabled: true
+    weight: 0.05
+    cases: 100
+    subcategories:
+      - known_answer
+      - unknown_answer
+      - insufficient_evidence
+      - source_disagreement
+
+  adversarial:
+    enabled: true
+    weight: 0.05
+    cases: 100
+    subcategories:
+      - misleading_instructions
+      - contradictory_documents
+      - irrelevant_information
+      - fake_evidence
+      - prompt_injection
+      - circular_citations
+
+  sweep_specific:
+    enabled: true
+    weight: 0.10
+    cases: 500
+    split:
+      development: 0.6
+      validation: 0.2
+      hidden_test: 0.2
+
+# ── Comparison Modes ──
+comparison_modes:
+  raw_model:
+    description: "No external search, no tools — core model capability only"
+    tools_enabled: false
+    search_enabled: false
+  tool_augmented:
+    description: "All systems receive equivalent tool access"
+    tools_enabled: true
+    search_enabled: false
+  full_system:
+    description: "Each system in its production configuration"
+    tools_enabled: true
+    search_enabled: true
+
+# ── Multi-run Settings ──
+multi_run:
+  min_runs: 5
+  important_runs: 10
+  stochastic_runs: 10
+  report_stats: [mean, median, std_dev, confidence_interval]
+
+# ── Scoring ──
+scoring:
+  primary_metrics:
+    - exact_match
+    - executable_test
+    - deterministic_parser
+    - mathematical_verification
+    - structured_validation
+  secondary_metrics:
+    - llm_judge  # Only as secondary, never primary
+  confidence_required: true
+  calibration_tracking: true
+
+# ── Weights for Overall Score ──
+weights:
+  reasoning: 0.15
+  mathematics: 0.10
+  coding: 0.10
+  knowledge: 0.10
+  instruction_following: 0.10
+  language: 0.05
+  data_analysis: 0.10
+  multimodal: 0.15
+  retrieval: 0.10
+  evidence_reasoning: 0.10
+  memory: 0.05
+  tool_use: 0.05
+
+# ── Output ──
+output:
+  directory: "benchmarks/reports"
+  formats: [html, json, csv]
+  leaderboard: true
+  failure_analysis: true
+  contamination_report: true
+  reproducibility_manifest: true

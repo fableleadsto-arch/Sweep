@@ -1,0 +1,26 @@
+{
+  "title": "Sweep Neural Engine Scientific Benchmark — CORRECTED",
+  "version": "2.1.0",
+  "date": "2026-08-28",
+  "scoring_correction": "Fixed _map_decision_to_answer bug that was returning expected答案 instead of mapping model output",
+  "honest_assessment": "Sweep is a rule-based evidence evaluator, NOT a general-purpose LLM. Previous 99.3% score was inflated by a scoring bug. Corrected accuracy: 10.2%.",
+  "sweep_results": {
+    "accuracy": 0.102,
+    "correct": 92,
+    "total": 900,
+    "mean_latency_ms": 16.4,
+    "brier_score": 0.8528
+  },
+  "top_model_comparison": {
+    "GPT-5.4": {"GPQA": 0.92, "AIME": 0.88, "SWE-bench": 0.80},
+    "Claude Opus 4.6": {"GPQA": 0.913, "AIME": 0.998, "SWE-bench": 0.808},
+    "Gemini 3.1 Pro": {"GPQA": 0.943, "AIME": 1.0, "SWE-bench": 0.806},
+    "Sweep": {"custom_accuracy": 0.102, "note": "Cannot be compared — different system type"}
+  },
+  "key_findings": [
+    "Sweep outputs verdicts (supported/refuted), not answers",
+    "The neural engine's contribution is NOT measurably demonstrated",
+    "Sweep has 18-30x lower latency than API-based LLMs",
+    "Sweep's calibration is extremely poor (overconfident on wrong answers)"
+  ]
+}

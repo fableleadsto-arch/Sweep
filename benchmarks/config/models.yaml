@@ -1,0 +1,95 @@
+# Model Configurations for Benchmark Comparison
+# ==============================================
+# Each model record contains all metadata needed for fair comparison.
+
+models:
+  sweep_neural_mesh:
+    provider: "local"
+    model_id: "sweep_neural_mesh"
+    version: "2.0.0"
+    context_length: 32768
+    temperature: 0.0
+    top_p: 1.0
+    max_output_tokens: 4096
+    tools_enabled: false
+    web_enabled: false
+    system_prompt: ""
+    hardware: "local_cpu"
+    description: "Sweep Neural Mesh — local reasoning engine"
+
+  sweep_full:
+    provider: "local"
+    model_id: "sweep_neural_mesh"
+    version: "2.0.0"
+    context_length: 32768
+    temperature: 0.0
+    top_p: 1.0
+    max_output_tokens: 4096
+    tools_enabled: true
+    web_enabled: true
+    system_prompt: ""
+    hardware: "local_cpu"
+    description: "Sweep Neural Mesh — full production configuration"
+
+  gpt4o:
+    provider: "openai"
+    model_id: "gpt-4o"
+    version: "2024-08-06"
+    context_length: 128000
+    temperature: 0.0
+    top_p: 1.0
+    max_output_tokens: 4096
+    tools_enabled: false
+    web_enabled: false
+    system_prompt: ""
+    hardware: "api"
+    description: "OpenAI GPT-4o"
+    api_key_env: "OPENAI_API_KEY"
+
+  claude_sonnet:
+    provider: "anthropic"
+    model_id: "claude-sonnet-4-20250514"
+    version: "2025-05-14"
+    context_length: 200000
+    temperature: 0.0
+    top_p: 1.0
+    max_output_tokens: 4096
+    tools_enabled: false
+    web_enabled: false
+    system_prompt: ""
+    hardware: "api"
+    description: "Anthropic Claude Sonnet"
+    api_key_env: "ANTHROPIC_API_KEY"
+
+  gemini_pro:
+    provider: "google"
+    model_id: "gemini-2.5-pro"
+    version: "2025-05-01"
+    context_length: 1000000
+    temperature: 0.0
+    top_p: 1.0
+    max_output_tokens: 4096
+    tools_enabled: false
+    web_enabled: false
+    system_prompt: ""
+    hardware: "api"
+    description: "Google Gemini Pro"
+    api_key_env: "GOOGLE_API_KEY"
+
+# ── Adapter Configuration ──
+adapters:
+  openai:
+    base_url: "https://api.openai.com/v1"
+    timeout: 60
+    max_retries: 3
+    rate_limit_rpm: 500
+  anthropic:
+    base_url: "https://api.anthropic.com"
+    timeout: 60
+    max_retries: 3
+    rate_limit_rpm: 200
+  google:
+    base_url: "https://generativelanguage.googleapis.com"
+    timeout: 60
+    max_retries: 3
+    rate_limit_rpm: 300

@@ -1,0 +1,77 @@
+{
+  "summary": {
+    "sweep_accuracy": 0.5,
+    "usual_accuracy": 0.3333,
+    "absolute_difference": 0.1667,
+    "relative_improvement_pct": 50.0,
+    "total_tasks": 30,
+    "sweep_correct": 15,
+    "usual_correct": 10
+  },
+  "latency": {
+    "sweep_avg_ms": 13.751,
+    "usual_avg_ms": 0.061,
+    "ratio": 223.96
+  },
+  "confidence_calibration": {
+    "sweep": {
+      "avg_confidence": 0.6433,
+      "confidence_when_correct": 0.6248,
+      "confidence_when_incorrect": 0.6618
+    },
+    "usual": {
+      "avg_confidence": 0.2939,
+      "confidence_when_correct": 0.3715,
+      "confidence_when_incorrect": 0.255
+    }
+  },
+  "by_category": {
+    "ambiguity_handling": {
+      "sweep_accuracy": 0.2,
+      "usual_accuracy": 0.0,
+      "difference": 0.2
+    },
+    "concept_identification": {
+      "sweep_accuracy": 0.8,
+      "usual_accuracy": 0.4,
+      "difference": 0.4
+    },
+    "confidence_calibration": {
+      "sweep_accuracy": 0.2,
+      "usual_accuracy": 0.4,
+      "difference": -0.2
+    },
+    "evidence_filtering": {
+      "sweep_accuracy": 0.8,
+      "usual_accuracy": 0.6,
+      "difference": 0.2
+    },
+    "multi_hop_reasoning": {
+      "sweep_accuracy": 0.6,
+      "usual_accuracy": 0.2,
+      "difference": 0.4
+    },
+    "relationship_grasping": {
+      "sweep_accuracy": 0.4,
+      "usual_accuracy": 0.4,
+      "difference": 0.0
+    }
+  },
+  "by_difficulty": {
+    "easy": {
+      "sweep_accuracy": 0.875,
+      "usual_accuracy": 0.625,
+      "difference": 0.25
+    },
+    "hard": {
+      "sweep_accuracy": 0.1818,
+      "usual_accuracy": 0.1818,
+      "difference": 0.0
+    },
+    "medium": {
+      "sweep_accuracy": 0.5455,
+      "usual_accuracy": 0.2727,
+      "difference": 0.2727
+    }
+  }
+}

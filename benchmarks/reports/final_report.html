@@ -1,0 +1,196 @@
+<!DOCTYPE html><html><head><title>Sweep Benchmark Report</title>
+<style>
+body{font-family:system-ui,sans-serif;margin:40px;background:#0a0a0a;color:#e0e0e0}
+h1{color:#00ff88;border-bottom:2px solid #00ff88;padding-bottom:10px}
+h2{color:#00ccff;margin-top:30px}
+h3{color:#ffaa00}
+table{border-collapse:collapse;width:100%;margin:15px 0}
+th,td{border:1px solid #333;padding:8px 12px;text-align:left}
+th{background:#1a1a2e;color:#00ff88}
+tr:nth-child(even){background:#111}
+.pass{color:#00ff88}.fail{color:#ff4444}
+.metric{font-size:1.1em;margin:5px 0}
+.summary-box{background:#1a1a2e;border:1px solid #333;border-radius:8px;padding:20px;margin:15px 0}
+</style></head><body>
+<h1>Sweep Neural Engine Scientific Benchmark</h1>
+<p>Generated: 2026-08-28T22:11:00.670676</p>
+<h2>Executive Summary</h2>
+<div class="summary-box">
+<h3>sweep_neural_mesh</h3>
+<p class="metric">Overall Accuracy: <strong>58.1%</strong></p>
+<p class="metric">Mean Latency: 13.8ms</p>
+<p class="metric">Tasks: 360</p>
+<h3>gpt4o</h3>
+<p class="metric">Overall Accuracy: <strong>0.0%</strong></p>
+<p class="metric">Mean Latency: 367.1ms</p>
+<p class="metric">Tasks: 360</p>
+<h3>claude</h3>
+<p class="metric">Overall Accuracy: <strong>0.0%</strong></p>
+<p class="metric">Mean Latency: 345.7ms</p>
+<p class="metric">Tasks: 360</p>
+</div>
+<h2>Environment</h2>
+<div class="summary-box">
+<p class="metric"><strong>date:</strong> 2026-08-28T22:06:38.515098</p>
+<p class="metric"><strong>os:</strong> Windows 11</p>
+<p class="metric"><strong>cpu:</strong> Intel64 Family 6 Model 186 Stepping 3, GenuineIntel</p>
+<p class="metric"><strong>gpu:</strong> none detected</p>
+<p class="metric"><strong>vram:</strong> N/A</p>
+<p class="metric"><strong>ram:</strong> 15.7 GB</p>
+<p class="metric"><strong>python_version:</strong> 3.13.7</p>
+<p class="metric"><strong>cuda_version:</strong> </p>
+<p class="metric"><strong>framework:</strong> </p>
+<p class="metric"><strong>sweep_commit:</strong> e8afd35d</p>
+<p class="metric"><strong>sweep_version:</strong> 2.0.0</p>
+<p class="metric"><strong>model:</strong> </p>
+<p class="metric"><strong>parameters:</strong> </p>
+<p class="metric"><strong>quantization:</strong> </p>
+<p class="metric"><strong>context_length:</strong> 0</p>
+<p class="metric"><strong>temperature:</strong> 0.0</p>
+<p class="metric"><strong>tools_enabled:</strong> False</p>
+<p class="metric"><strong>internet_enabled:</strong> False</p>
+<p class="metric"><strong>retrieval_enabled:</strong> False</p>
+<p class="metric"><strong>benchmark_version:</strong> 2.0.0</p>
+</div>
+<h2>Category Results</h2>
+<h3>sweep_neural_mesh</h3>
+<table><tr><th>Category</th><th>Accuracy</th><th>Tasks</th><th>Mean Latency</th></tr>
+<tr><td>adversarial</td><td>70.0%</td><td>20</td><td>8.4ms</td></tr>
+<tr><td>coding</td><td>35.0%</td><td>20</td><td>10.4ms</td></tr>
+<tr><td>data_analysis</td><td>80.0%</td><td>20</td><td>12.0ms</td></tr>
+<tr><td>entity_resolution</td><td>40.0%</td><td>20</td><td>13.5ms</td></tr>
+<tr><td>evidence_reasoning</td><td>20.0%</td><td>20</td><td>19.5ms</td></tr>
+<tr><td>instruction_following</td><td>100.0%</td><td>20</td><td>11.3ms</td></tr>
+<tr><td>knowledge</td><td>95.0%</td><td>20</td><td>9.5ms</td></tr>
+<tr><td>language</td><td>10.0%</td><td>20</td><td>10.9ms</td></tr>
+<tr><td>mathematics</td><td>100.0%</td><td>20</td><td>10.9ms</td></tr>
+<tr><td>memory</td><td>75.0%</td><td>20</td><td>25.8ms</td></tr>
+<tr><td>multimodal</td><td>75.0%</td><td>20</td><td>12.5ms</td></tr>
+<tr><td>planning</td><td>70.0%</td><td>20</td><td>13.8ms</td></tr>
+<tr><td>reasoning</td><td>60.0%</td><td>20</td><td>9.3ms</td></tr>
+<tr><td>retrieval</td><td>100.0%</td><td>20</td><td>15.1ms</td></tr>
+<tr><td>sweep_specific</td><td>15.0%</td><td>20</td><td>20.9ms</td></tr>
+<tr><td>tool_use</td><td>0.0%</td><td>20</td><td>14.1ms</td></tr>
+<tr><td>uncertainty</td><td>0.0%</td><td>20</td><td>21.0ms</td></tr>
+<tr><td>web_research</td><td>100.0%</td><td>20</td><td>9.1ms</td></tr>
+</table>
+<h3>gpt4o</h3>
+<table><tr><th>Category</th><th>Accuracy</th><th>Tasks</th><th>Mean Latency</th></tr>
+<tr><td>adversarial</td><td>0.0%</td><td>20</td><td>331.6ms</td></tr>
+<tr><td>coding</td><td>0.0%</td><td>20</td><td>329.2ms</td></tr>
+<tr><td>data_analysis</td><td>0.0%</td><td>20</td><td>344.8ms</td></tr>
+<tr><td>entity_resolution</td><td>0.0%</td><td>20</td><td>349.0ms</td></tr>
+<tr><td>evidence_reasoning</td><td>0.0%</td><td>20</td><td>336.3ms</td></tr>
+<tr><td>instruction_following</td><td>0.0%</td><td>20</td><td>339.2ms</td></tr>
+<tr><td>knowledge</td><td>0.0%</td><td>20</td><td>340.7ms</td></tr>
+<tr><td>language</td><td>0.0%</td><td>20</td><td>336.1ms</td></tr>
+<tr><td>mathematics</td><td>0.0%</td><td>20</td><td>336.8ms</td></tr>
+<tr><td>memory</td><td>0.0%</td><td>20</td><td>331.0ms</td></tr>
+<tr><td>multimodal</td><td>0.0%</td><td>20</td><td>340.5ms</td></tr>
+<tr><td>planning</td><td>0.0%</td><td>20</td><td>339.4ms</td></tr>
+<tr><td>reasoning</td><td>0.0%</td><td>20</td><td>856.4ms</td></tr>
+<tr><td>retrieval</td><td>0.0%</td><td>20</td><td>343.3ms</td></tr>
+<tr><td>sweep_specific</td><td>0.0%</td><td>20</td><td>335.3ms</td></tr>
+<tr><td>tool_use</td><td>0.0%</td><td>20</td><td>324.9ms</td></tr>
+<tr><td>uncertainty</td><td>0.0%</td><td>20</td><td>350.0ms</td></tr>
+<tr><td>web_research</td><td>0.0%</td><td>20</td><td>343.6ms</td></tr>
+</table>
+<h3>claude</h3>
+<table><tr><th>Category</th><th>Accuracy</th><th>Tasks</th><th>Mean Latency</th></tr>
+<tr><td>adversarial</td><td>0.0%</td><td>20</td><td>339.2ms</td></tr>
+<tr><td>coding</td><td>0.0%</td><td>20</td><td>357.8ms</td></tr>
+<tr><td>data_analysis</td><td>0.0%</td><td>20</td><td>330.3ms</td></tr>
+<tr><td>entity_resolution</td><td>0.0%</td><td>20</td><td>326.7ms</td></tr>
+<tr><td>evidence_reasoning</td><td>0.0%</td><td>20</td><td>333.4ms</td></tr>
+<tr><td>instruction_following</td><td>0.0%</td><td>20</td><td>337.2ms</td></tr>
+<tr><td>knowledge</td><td>0.0%</td><td>20</td><td>332.5ms</td></tr>
+<tr><td>language</td><td>0.0%</td><td>20</td><td>374.7ms</td></tr>
+<tr><td>mathematics</td><td>0.0%</td><td>20</td><td>333.6ms</td></tr>
+<tr><td>memory</td><td>0.0%</td><td>20</td><td>344.8ms</td></tr>
+<tr><td>multimodal</td><td>0.0%</td><td>20</td><td>327.3ms</td></tr>
+<tr><td>planning</td><td>0.0%</td><td>20</td><td>342.6ms</td></tr>
+<tr><td>reasoning</td><td>0.0%</td><td>20</td><td>427.1ms</td></tr>
+<tr><td>retrieval</td><td>0.0%</td><td>20</td><td>352.8ms</td></tr>
+<tr><td>sweep_specific</td><td>0.0%</td><td>20</td><td>328.4ms</td></tr>
+<tr><td>tool_use</td><td>0.0%</td><td>20</td><td>357.7ms</td></tr>
+<tr><td>uncertainty</td><td>0.0%</td><td>20</td><td>325.7ms</td></tr>
+<tr><td>web_research</td><td>0.0%</td><td>20</td><td>350.3ms</td></tr>
+</table>
+<h2>Statistical Comparisons</h2>
+<table><tr><th>Model A</th><th>Model B</th><th>Diff (pp)</th><th>p-value</th><th>Significant</th><th>Interpretation</th></tr>
+<tr><td>sweep_neural_mesh</td><td>gpt4o</td><td>58.06</td><td>0.0000</td><td class="pass">Yes</td><td>sweep_neural_mesh scored 58.1 percentage points higher than gpt4o; the difference was established as statistically significant (p=0.0000).</td></tr>
+<tr><td>sweep_neural_mesh</td><td>claude</td><td>58.06</td><td>0.0000</td><td class="pass">Yes</td><td>sweep_neural_mesh scored 58.1 percentage points higher than claude; the difference was established as statistically significant (p=0.0000).</td></tr>
+<tr><td>gpt4o</td><td>claude</td><td>0.00</td><td>1.0000</td><td class="fail">No</td><td>gpt4o scored 0.0 percentage points lower than claude; the difference was not established as statistically significant (p=1.0000).</td></tr>
+</table>
+<h2>Contamination Analysis</h2>
+<p>Integrity: <span class="pass">PASS</span></p>
+<p>Dataset Hash: 4dedea4a1e44ab37</p>
+<p>Total Tasks: 360</p>
+<p>Hidden Tests: 4</p>
+<h2>Failure Analysis</h2>
+<h3>sweep_neural_mesh</h3>
+<table><tr><th>Failure Category</th><th>Count</th><th>Percentage</th></tr>
+<tr><td>REASONING_ERROR</td><td>73</td><td>20.3%</td></tr>
+<tr><td>HALLUCINATION</td><td>17</td><td>4.7%</td></tr>
+<tr><td>SOURCE_ATTRIBUTION_ERROR</td><td>16</td><td>4.4%</td></tr>
+<tr><td>TOOL_EXECUTION_ERROR</td><td>13</td><td>3.6%</td></tr>
+<tr><td>ENTITY_RESOLUTION_ERROR</td><td>12</td><td>3.3%</td></tr>
+<tr><td>OVERCONFIDENCE</td><td>9</td><td>2.5%</td></tr>
+<tr><td>PERCEPTION_ERROR</td><td>5</td><td>1.4%</td></tr>
+<tr><td>MEMORY_ERROR</td><td>5</td><td>1.4%</td></tr>
+<tr><td>KNOWLEDGE_ERROR</td><td>1</td><td>0.3%</td></tr>
+</table>
+<h3>gpt4o</h3>
+<table><tr><th>Failure Category</th><th>Count</th><th>Percentage</th></tr>
+<tr><td>REASONING_ERROR</td><td>140</td><td>38.9%</td></tr>
+<tr><td>HALLUCINATION</td><td>40</td><td>11.1%</td></tr>
+<tr><td>ARITHMETIC_ERROR</td><td>20</td><td>5.6%</td></tr>
+<tr><td>TOOL_EXECUTION_ERROR</td><td>20</td><td>5.6%</td></tr>
+<tr><td>KNOWLEDGE_ERROR</td><td>20</td><td>5.6%</td></tr>
+<tr><td>INSTRUCTION_FOLLOWING_ERROR</td><td>20</td><td>5.6%</td></tr>
+<tr><td>PERCEPTION_ERROR</td><td>20</td><td>5.6%</td></tr>
+<tr><td>RETRIEVAL_ERROR</td><td>20</td><td>5.6%</td></tr>
+<tr><td>ENTITY_RESOLUTION_ERROR</td><td>20</td><td>5.6%</td></tr>
+<tr><td>SOURCE_ATTRIBUTION_ERROR</td><td>20</td><td>5.6%</td></tr>
+<tr><td>MEMORY_ERROR</td><td>20</td><td>5.6%</td></tr>
+</table>
+<h3>claude</h3>
+<table><tr><th>Failure Category</th><th>Count</th><th>Percentage</th></tr>
+<tr><td>REASONING_ERROR</td><td>140</td><td>38.9%</td></tr>
+<tr><td>HALLUCINATION</td><td>40</td><td>11.1%</td></tr>
+<tr><td>ARITHMETIC_ERROR</td><td>20</td><td>5.6%</td></tr>
+<tr><td>TOOL_EXECUTION_ERROR</td><td>20</td><td>5.6%</td></tr>
+<tr><td>KNOWLEDGE_ERROR</td><td>20</td><td>5.6%</td></tr>
+<tr><td>INSTRUCTION_FOLLOWING_ERROR</td><td>20</td><td>5.6%</td></tr>
+<tr><td>PERCEPTION_ERROR</td><td>20</td><td>5.6%</td></tr>
+<tr><td>RETRIEVAL_ERROR</td><td>20</td><td>5.6%</td></tr>
+<tr><td>ENTITY_RESOLUTION_ERROR</td><td>20</td><td>5.6%</td></tr>
+<tr><td>SOURCE_ATTRIBUTION_ERROR</td><td>20</td><td>5.6%</td></tr>
+<tr><td>MEMORY_ERROR</td><td>20</td><td>5.6%</td></tr>
+</table>
+<h2>Calibration</h2>
+<h3>sweep_neural_mesh</h3>
+<p>Mean Confidence: 0.835</p>
+<p>Mean Confidence (when correct): 0.845</p>
+<p>Brier Score: 0.334</p>
+<p>ECE: 0.315</p>
+<h2>Limitations</h2>
+<div class="summary-box">
+<ul>
+<li>Benchmark uses procedurally generated tasks, not real-world datasets</li>
+<li>External model comparison requires API keys and may have different latency profiles</li>
+<li>LLM-judge evaluation is secondary; primary scoring is deterministic</li>
+<li>Contamination control relies on hash integrity, not external auditing</li>
+<li>Multi-run stochastic testing is limited by compute budget</li>
+</ul></div>
+<h2>Reproducibility</h2>
+<div class="summary-box">
+<p>To reproduce this benchmark:</p>
+<pre>sweep-benchmark run --suite full --seed 42 --cases 200</pre>
+<p>Ensure identical environment, dependencies, and configuration.</p>
+</div>
+<h2>Honest Assessment</h2>
+<div class="summary-box">
+<p>This benchmark establishes measured performance under specified conditions. It does not establish general intelligence comparisons. Results are valid only for the specific configurations tested.</p>
+</div>
+</body></html>

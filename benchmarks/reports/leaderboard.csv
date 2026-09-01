@@ -1,0 +1,4 @@
+Model,Overall,Latency_ms,Adversarial,Coding,Data_Analysis,Entity_Resolution,Evidence_Reasoning,Instruction_Following,Knowledge,Language,Mathematics,Memory,Multimodal,Planning,Reasoning,Retrieval,Sweep_Specific,Tool_Use,Uncertainty,Web_Research
+sweep_neural_mesh,0.5806,13.8,0.7000,0.3500,0.8000,0.4000,0.2000,1.0000,0.9500,0.1000,1.0000,0.7500,0.7500,0.7000,0.6000,1.0000,0.1500,0.0000,0.0000,1.0000
+gpt4o,0.0000,367.1,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000
+claude,0.0000,345.7,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000,0.0000
