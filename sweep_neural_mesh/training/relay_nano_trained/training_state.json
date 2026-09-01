@@ -1,0 +1,12 @@
+{
+  "best_loss": 0.0008911729673855007,
+  "dataset": "",
+  "evaluation": {},
+  "optimizer": {
+    "lr": 0.0,
+    "step_count": 500
+  },
+  "status": "trained",
+  "step": 500,
+  "updated_at": "2026-08-30T21:38:44"
+}

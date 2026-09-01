@@ -1,0 +1,126 @@
+{
+  "started": 1787919633.8163655,
+  "budget_seconds": 3600.0,
+  "phase_a_budget": 1500.0,
+  "phase_b_budget": 2000.0,
+  "honesty": "train/eval disjoint; all numbers measured on held-out eval; no sample tuning; no fake growth",
+  "phase_a": {
+    "base": {
+      "total": 50,
+      "covered": 45,
+      "coverage": 90.0,
+      "correct": 24,
+      "accuracy": 53.333333333333336,
+      "derived": 19
+    },
+    "eval_set_size": 50,
+    "iterations": [
+      {
+        "iteration": 1,
+        "new_parse_failures_this_iter": 45,
+        "distinct_grammar_gap_classes": 2,
+        "eval_coverage_pct": 90.0,
+        "eval_accuracy_pct": 53.3,
+        "eval_correct": 24,
+        "eval_covered": 45,
+        "elapsed_iter": 11.8
+      },
+      {
+        "iteration": 2,
+        "new_parse_failures_this_iter": 46,
+        "distinct_grammar_gap_classes": 2,
+        "eval_coverage_pct": 90.0,
+        "eval_accuracy_pct": 53.3,
+        "eval_correct": 24,
+        "eval_covered": 45,
+        "elapsed_iter": 12.3
+      },
+      {
+        "iteration": 3,
+        "new_parse_failures_this_iter": 45,
+        "distinct_grammar_gap_classes": 2,
+        "eval_coverage_pct": 90.0,
+        "eval_accuracy_pct": 53.3,
+        "eval_correct": 24,
+        "eval_covered": 45,
+        "elapsed_iter": 12.3
+      }
+    ],
+    "final": {
+      "total": 50,
+      "covered": 45,
+      "coverage": 90.0,
+      "correct": 24,
+      "accuracy": 53.333333333333336,
+      "derived": 19
+    },
+    "grammar_gap_classes": {
+      "DATA_MALFORMED(unbalanced parens)": {
+        "count": 130,
+        "example": "\u2200x ((Lipstick(x) \u2227 In(x, rougeDiorSet) \u2227 In(x, lunarNewYearLimitedEdition)) \u2192 (VelvetFinish(x) \u2295 SatinFinish(x))",
+        "data_malformed": true
+      },
+      "expected term, got RPAREN [near token '\u2227']": {
+        "count": 5,
+        "example": "\u2203x (Song(x) \u2227 By(x, boneym,) \u2227 Number1GermanSingle(x))",
+        "data_malformed": false
+      },
+      "expected RPAREN, got IDENT('bolt') [near token ')']": {
+        "count": 1,
+        "example": "\u2200x (Man(x) \u2192 \u00acRunFasterThan(xm bolt))",
+        "data_malformed": false
+      }
+    },
+    "gaps_non_malformed": [
+      {
+        "cause": "expected term, got RPAREN [near token '\u2227']",
+        "count": 5,
+        "example": "\u2203x (Song(x) \u2227 By(x, boneym,) \u2227 Number1GermanSingle(x))"
+      },
+      {
+        "cause": "expected RPAREN, got IDENT('bolt') [near token ')']",
+        "count": 1,
+        "example": "\u2200x (Man(x) \u2192 \u00acRunFasterThan(xm bolt))"
+      }
+    ]
+  },
+  "phase_a_elapsed": 70.0,
+  "phase_b": {
+    "iterations": [
+      {
+        "iteration": 1,
+        "start_acc": 47.1,
+        "final_acc": 46.5,
+        "start_cov": 135.9,
+        "final_cov": 136.5,
+        "d_acc": -0.6,
+        "d_cov": 0.6,
+        "iters_run": 2,
+        "elapsed": 21.9
+      },
+      {
+        "iteration": 2,
+        "start_acc": 47.1,
+        "final_acc": 46.5,
+        "start_cov": 135.9,
+        "final_cov": 136.5,
+        "d_acc": -0.6,
+        "d_cov": 0.6,
+        "iters_run": 2,
+        "elapsed": 17.77
+      }
+    ],
+    "final": {
+      "iteration": 2,
+      "start_acc": 47.1,
+      "final_acc": 46.5,
+      "start_cov": 135.9,
+      "final_cov": 136.5,
+      "d_acc": -0.6,
+      "d_cov": 0.6,
+      "iters_run": 2,
+      "elapsed": 17.77
+    }
+  },
+  "total_elapsed": 109.8
+}

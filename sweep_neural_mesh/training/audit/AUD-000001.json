@@ -1,0 +1,10 @@
+{
+  "entry_id": "AUD-000001",
+  "timestamp": 1788118458.179757,
+  "action": "license_check",
+  "actor": "safety_manager",
+  "target": "private_data",
+  "result": "denied",
+  "reason": "License 'private' does not allow training",
+  "metadata": {}
+}

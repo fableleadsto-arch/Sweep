@@ -1,0 +1,15 @@
+{
+  "failure_id": "FAIL-000001",
+  "timestamp": 1788118458.164315,
+  "input_text": "What is 2 + 2?",
+  "expected_output": "4",
+  "actual_output": "5",
+  "category": "ARITHMETIC_ERROR",
+  "subcategory": "general",
+  "severity": "critical",
+  "task_domain": "mathematics",
+  "confidence": 0.9,
+  "latency_ms": 0.0,
+  "is_regression": false,
+  "root_cause": "model attempted mental math instead of using deterministic computation"
+}

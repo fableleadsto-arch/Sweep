@@ -1,0 +1,19 @@
+{
+  "relay_transformer": {
+    "correct": 0,
+    "total": 10,
+    "accuracy": 0.0
+  },
+  "minilm_embeddings": {
+    "correct": 0,
+    "total": 5,
+    "accuracy": 0.0
+  },
+  "cortex_integration": {
+    "correct": 4,
+    "total": 6,
+    "accuracy": 0.6666666666666666
+  },
+  "model_parameters": 10489088,
+  "training_steps": 200
+}

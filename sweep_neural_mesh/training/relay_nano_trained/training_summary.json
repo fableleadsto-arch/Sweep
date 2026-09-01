@@ -1,0 +1,12 @@
+{
+  "model": "relay-nano",
+  "parameters": 2098304,
+  "trainable_parameters": 2098304,
+  "training_steps": 500,
+  "final_loss": 0.002252587815746665,
+  "best_loss": 0.0008911729673855007,
+  "duration_seconds": 230.883154630661,
+  "checkpoint_dir": "C:\\Users\\mansh\\OneDrive\\Desktop\\MyStuff\\sweep\\sweep_neural_mesh\\training\\relay_nano_trained",
+  "status": "trained",
+  "training_performed": true
+}

@@ -1,0 +1,10 @@
+{
+  "entry_id": "AUD-000003",
+  "timestamp": 1788118458.183072,
+  "action": "retrieval",
+  "actor": "web_scraper",
+  "target": "wikipedia.org",
+  "result": "allowed",
+  "reason": "Query: quantum computing",
+  "metadata": {}
+}

@@ -1,0 +1,9 @@
+{
+  "model": "relay-small",
+  "parameters": 10489088,
+  "training_steps": 300,
+  "final_loss": 0.4821731448173523,
+  "best_loss": 0.3659002184867859,
+  "duration_seconds": 424.0171699523926,
+  "status": "trained"
+}

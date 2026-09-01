@@ -1,0 +1,8 @@
+{
+  "created_at": "2026-08-30T22:35:56",
+  "hardware": {
+    "cpu_count": 12,
+    "cuda": false,
+    "torch": true
+  }
+}

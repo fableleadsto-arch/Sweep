@@ -1,0 +1,112 @@
+[23:48:22] RSI-HOUR driver start. total budget=45s (A=25s B=20s)
+[23:48:47] train=1001 eval=203 loaded
+[23:48:47] PHASE A start (budget 25s): FOL-prover grammar audit
+[23:55:13] RSI-HOUR driver start. total budget=90s (A=55s B=35s)
+[23:55:30] train=1001 eval=203 loaded
+[23:55:30] PHASE A start (budget 55s): FOL-prover grammar audit
+[13:30:43] RSI-HOUR driver start. total budget=90s (A=55s B=35s)
+[13:31:30] train=1001 eval=203 loaded
+[13:31:30] PHASE A start (budget 55s): FOL-prover grammar audit
+[14:36:01] RSI-HOUR driver start. total budget=120s (A=70s B=50s)
+[14:36:42] train=1001 eval=203 loaded
+[14:36:42] PHASE A start (budget 70s): FOL-prover grammar audit
+[14:37:05]   A eval-set=50 base cov=90.0% acc=53.3% covered=45/50
+[14:37:28]   A iter 1: +52 new pf; n_gaps=8; eval cov=90.0% acc=53.3% (46s)
+[14:37:51]   A iter 2: +59 new pf; n_gaps=9; eval cov=90.0% acc=53.3% (69s)
+[14:38:15]   A iter 3: +59 new pf; n_gaps=11; eval cov=90.0% acc=53.3% (93s)
+[14:41:32] RSI-HOUR driver start. total budget=120s (A=70s B=40s)
+[14:42:12] train=1001 eval=203 loaded
+[14:42:12] PHASE A start (budget 70s): FOL-prover grammar audit
+[14:42:35]   A eval-set=50 base cov=90.0% acc=53.3% covered=45/50
+[14:42:59]   A iter 1: +52 new pf; n_gaps=8; eval cov=90.0% acc=53.3% (46s)
+[14:43:22]   A iter 2: +59 new pf; n_gaps=9; eval cov=90.0% acc=53.3% (69s)
+[14:43:45]   A iter 3: +59 new pf; n_gaps=11; eval cov=90.0% acc=53.3% (93s)
+[14:43:45] PHASE A done in 93s. final cov=90.0% acc=53.3%
+[14:43:45] DONE. total elapsed=133.0s. report=C:\Users\mansh\OneDrive\Desktop\MyStuff\sweep\sweep_neural_mesh\training\logic_data\results\rsi_hour_report.json. self-terminating.
+[14:49:10] PHASE B start (budget 60s): FOLEngine lexicon RSI
+[14:49:43]   B iter 1 error: 'NoneType' object has no attribute 'strip'
+[15:49:30] RSI-HOUR driver start. total budget=180s (A=90s B=60s)
+[15:49:52] train=1001 eval=203 loaded
+[15:49:52] PHASE A start (budget 90s): FOL-prover grammar audit
+[15:50:05]   A eval-set=50 base cov=90.0% acc=53.3% covered=45/50
+[15:50:17]   A iter 1: +52 new pf; n_gaps=8; eval cov=90.0% acc=53.3% (24s)
+[15:50:29]   A iter 2: +59 new pf; n_gaps=9; eval cov=90.0% acc=53.3% (37s)
+[15:50:41]   A iter 3: +59 new pf; n_gaps=11; eval cov=90.0% acc=53.3% (49s)
+[15:50:55]   A iter 4: +52 new pf; n_gaps=11; eval cov=90.0% acc=53.3% (62s)
+[15:51:08]   A iter 5: +57 new pf; n_gaps=11; eval cov=90.0% acc=53.3% (76s)
+[15:51:08]   A plateau (no new general grammar gaps on fresh train) — stop
+[15:51:08] PHASE A done in 76s. final cov=90.0% acc=53.3%
+[15:51:08] PHASE B start (budget 60s): FOLEngine lexicon RSI
+[15:51:30]   B iter 1: acc 47.1% -> 46.5% (d=-0.6%) cov 135.9%->136.5% iters_run=2 (22s)
+[15:51:49]   B iter 2: acc 47.1% -> 46.5% (d=-0.6%) cov 135.9%->136.5% iters_run=2 (19s)
+[15:51:49]   B plateau (no further held-out reward) — stopping B early
+[15:51:49] DONE. total elapsed=139.2s. report=C:\Users\mansh\OneDrive\Desktop\MyStuff\sweep\sweep_neural_mesh\training\logic_data\results\rsi_hour_report.json. self-terminating.
+[15:55:59] RSI-HOUR driver start. total budget=3600s (A=1500s B=2000s)
+[15:56:27] train=1001 eval=203 loaded
+[15:56:27] PHASE A start (budget 1500s): FOL-prover grammar audit
+[15:56:39]   A eval-set=50 base cov=90.0% acc=53.3% covered=45/50
+[15:56:52]   A iter 1: +52 new pf; n_gaps=8; eval cov=90.0% acc=53.3% (26s)
+[15:57:05]   A iter 2: +59 new pf; n_gaps=9; eval cov=90.0% acc=53.3% (38s)
+[15:57:19]   A iter 3: +59 new pf; n_gaps=11; eval cov=90.0% acc=53.3% (52s)
+[15:57:33]   A iter 4: +52 new pf; n_gaps=11; eval cov=90.0% acc=53.3% (66s)
+[15:57:45]   A iter 5: +57 new pf; n_gaps=11; eval cov=90.0% acc=53.3% (79s)
+[15:57:45]   A plateau (no new general grammar gaps on fresh train) — stop
+[15:57:45] PHASE A done in 79s. final cov=90.0% acc=53.3%
+[15:57:45] PHASE B start (budget 2000s): FOLEngine lexicon RSI
+[15:58:08]   B iter 1: acc 47.1% -> 46.5% (d=-0.6%) cov 135.9%->136.5% iters_run=2 (23s)
+[15:58:26]   B iter 2: acc 47.1% -> 46.5% (d=-0.6%) cov 135.9%->136.5% iters_run=2 (18s)
+[15:58:26]   B plateau (no further held-out reward) — stopping B early
+[15:58:26] DONE. total elapsed=147.5s. report=C:\Users\mansh\OneDrive\Desktop\MyStuff\sweep\sweep_neural_mesh\training\logic_data\results\rsi_hour_report.json. self-terminating.
+[16:03:48] RSI-HOUR driver start. total budget=180s (A=90s B=60s)
+[16:04:12] train=1001 eval=203 loaded
+[16:04:12] PHASE A start (budget 90s): FOL-prover grammar audit
+[16:04:26]   A eval-set=50 base cov=90.0% acc=53.3% covered=45/50
+[16:04:38]   A iter 1: +52 new pf; n_gaps=7; eval cov=90.0% acc=53.3% (26s)
+[16:04:52]   A iter 2: +59 new pf; n_gaps=8; eval cov=90.0% acc=53.3% (40s)
+[16:05:06]   A iter 3: +59 new pf; n_gaps=10; eval cov=90.0% acc=53.3% (54s)
+[16:05:19]   A iter 4: +52 new pf; n_gaps=10; eval cov=90.0% acc=53.3% (67s)
+[16:05:33]   A iter 5: +57 new pf; n_gaps=10; eval cov=90.0% acc=53.3% (81s)
+[16:05:33]   A plateau (no new general grammar gaps on fresh train) — stop
+[16:05:33] PHASE A done in 81s. final cov=90.0% acc=53.3%
+[16:05:33] PHASE B start (budget 60s): FOLEngine lexicon RSI
+[16:05:57]   B iter 1: acc 47.1% -> 46.5% (d=-0.6%) cov 135.9%->136.5% iters_run=2 (24s)
+[16:06:14]   B iter 2: acc 47.1% -> 46.5% (d=-0.6%) cov 135.9%->136.5% iters_run=2 (17s)
+[16:06:14]   B plateau (no further held-out reward) — stopping B early
+[16:06:14] DONE. total elapsed=146.5s. report=C:\Users\mansh\OneDrive\Desktop\MyStuff\sweep\sweep_neural_mesh\training\logic_data\results\rsi_hour_report.json. self-terminating.
+[16:11:39] RSI-HOUR driver start. total budget=180s (A=90s B=60s)
+[16:12:07] train=1001 eval=203 loaded
+[16:12:07] PHASE A start (budget 90s): FOL-prover grammar audit
+[16:12:35]   A eval-set=50 base cov=90.0% acc=53.3% covered=45/50
+[16:13:10]   A iter 1: +47 new pf; n_gaps=4; eval cov=90.0% acc=53.3% (63s)
+[16:13:57]   A iter 2: +49 new pf; n_gaps=4; eval cov=90.0% acc=53.3% (109s)
+[16:13:57] PHASE A done in 109s. final cov=90.0% acc=53.3%
+[16:13:57] PHASE B start (budget 42s): FOLEngine lexicon RSI
+[16:14:32]   B iter 1: acc 47.1% -> 46.5% (d=-0.6%) cov 135.9%->136.5% iters_run=2 (35s)
+[16:14:50]   B iter 2: acc 47.1% -> 46.5% (d=-0.6%) cov 135.9%->136.5% iters_run=2 (18s)
+[16:14:50]   B plateau (no further held-out reward) — stopping B early
+[16:14:50] DONE. total elapsed=191.6s. report=C:\Users\mansh\OneDrive\Desktop\MyStuff\sweep\sweep_neural_mesh\training\logic_data\results\rsi_hour_report.json. self-terminating.
+[17:42:48] RSI-HOUR driver start. total budget=180s (A=90s B=60s)
+[17:43:43] train=1001 eval=203 loaded
+[17:43:43] PHASE A start (budget 90s): FOL-prover grammar audit
+[17:44:08]   A eval-set=50 base cov=90.0% acc=53.3% covered=45/50
+[17:44:32]   A iter 1: +45 new pf; n_gaps=2; eval cov=90.0% acc=53.3% (50s)
+[17:44:57]   A iter 2: +46 new pf; n_gaps=2; eval cov=90.0% acc=53.3% (74s)
+[17:45:21]   A iter 3: +45 new pf; n_gaps=2; eval cov=90.0% acc=53.3% (98s)
+[17:45:21] PHASE A done in 98s. final cov=90.0% acc=53.3%
+[17:45:21] PHASE B start (budget 27s): FOLEngine lexicon RSI
+[17:45:49]   B iter 1: acc 47.1% -> 46.5% (d=-0.6%) cov 135.9%->136.5% iters_run=2 (28s)
+[17:45:49] DONE. total elapsed=181.0s. report=C:\Users\mansh\OneDrive\Desktop\MyStuff\sweep\sweep_neural_mesh\training\logic_data\results\rsi_hour_report.json. self-terminating.
+[17:50:33] RSI-HOUR driver start. total budget=3600s (A=1500s B=2000s)
+[17:50:55] train=1001 eval=203 loaded
+[17:50:55] PHASE A start (budget 1500s): FOL-prover grammar audit
+[17:51:07]   A eval-set=50 base cov=90.0% acc=53.3% covered=45/50
+[17:51:19]   A iter 1: +45 new pf; n_gaps=2; eval cov=90.0% acc=53.3% (23s)
+[17:51:31]   A iter 2: +46 new pf; n_gaps=2; eval cov=90.0% acc=53.3% (36s)
+[17:51:43]   A iter 3: +45 new pf; n_gaps=2; eval cov=90.0% acc=53.3% (48s)
+[17:51:43]   A plateau (no new general grammar gaps on fresh train) — stop
+[17:51:43] PHASE A done in 48s. final cov=90.0% acc=53.3%
+[17:51:43] PHASE B start (budget 2000s): FOLEngine lexicon RSI
+[17:52:05]   B iter 1: acc 47.1% -> 46.5% (d=-0.6%) cov 135.9%->136.5% iters_run=2 (22s)
+[17:52:23]   B iter 2: acc 47.1% -> 46.5% (d=-0.6%) cov 135.9%->136.5% iters_run=2 (18s)
+[17:52:23]   B plateau (no further held-out reward) — stopping B early
+[17:52:23] DONE. total elapsed=109.8s. report=C:\Users\mansh\OneDrive\Desktop\MyStuff\sweep\sweep_neural_mesh\training\logic_data\results\rsi_hour_report.json. self-terminating.
