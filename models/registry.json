@@ -1,0 +1,110 @@
+{
+  "bert-base-uncased": {
+    "status": "downloaded",
+    "verified": true,
+    "error": "",
+    "local_path": "models/nlp/bert-base-uncased"
+  },
+  "deberta-v3-base": {
+    "status": "downloaded",
+    "verified": true,
+    "error": "",
+    "local_path": "models/nlp/deberta-v3-base"
+  },
+  "roberta-base": {
+    "status": "downloaded",
+    "verified": true,
+    "error": "",
+    "local_path": "models/nlp/roberta-base"
+  },
+  "xlm-roberta-base": {
+    "status": "downloaded",
+    "verified": true,
+    "error": "",
+    "local_path": "models/nlp/xlm-roberta-base"
+  },
+  "gliner-base-v2.1": {
+    "status": "downloaded",
+    "verified": true,
+    "error": "Your currently installed version of Keras is Keras 3, but this is not yet supported in Transformers. Please install the backwards-compatible tf-keras package with `pip install tf-keras`.",
+    "local_path": "models/nlp/gliner_base-v2.1"
+  },
+  "all-MiniLM-L6-v2": {
+    "status": "downloaded",
+    "verified": true,
+    "error": "_path_isfile: path should be string, bytes, os.PathLike or integer, not NoneType",
+    "local_path": "models/embeddings/all-MiniLM-L6-v2"
+  },
+  "all-mpnet-base-v2": {
+    "status": "downloaded",
+    "verified": true,
+    "error": "Your currently installed version of Keras is Keras 3, but this is not yet supported in Transformers. Please install the backwards-compatible tf-keras package with `pip install tf-keras`.",
+    "local_path": "models/embeddings/all-mpnet-base-v2"
+  },
+  "clip-vit-b32": {
+    "status": "downloaded",
+    "verified": true,
+    "error": "",
+    "local_path": "models/vision/clip-vit-b32"
+  },
+  "clip-vit-l14": {
+    "status": "downloaded",
+    "verified": false,
+    "error": "",
+    "local_path": "models/vision/clip-vit-l14"
+  },
+  "yolo-v8n": {
+    "status": "downloaded",
+    "verified": true,
+    "error": "",
+    "local_path": "models/detection/yolo"
+  },
+  "insightface": {
+    "status": "downloaded",
+    "verified": true,
+    "error": "",
+    "local_path": "models/face/insightface"
+  },
+  "whisper-base": {
+    "status": "downloaded",
+    "verified": true,
+    "error": "",
+    "local_path": "models/speech"
+  },
+  "wav2vec2-base": {
+    "status": "downloaded",
+    "verified": true,
+    "error": "",
+    "local_path": "models/audio/wav2vec2"
+  },
+  "pyannote-segmentation": {
+    "status": "unavailable",
+    "verified": false,
+    "error": "",
+    "local_path": "models/audio/pyannote"
+  },
+  "layoutlm-base": {
+    "status": "downloaded",
+    "verified": true,
+    "error": "",
+    "local_path": "models/documents/layoutlm"
+  },
+  "layoutlmv3-base": {
+    "status": "loaded",
+    "verified": false,
+    "error": "",
+    "local_path": "models/documents/layoutlmv3-base"
+  },
+  "opencv": {
+    "status": "downloaded",
+    "verified": true,
+    "error": "",
+    "local_path": ""
+  },
+  "tesseract": {
+    "status": "not_downloaded",
+    "verified": false,
+    "error": "",
+    "local_path": ""
+  }
+}
