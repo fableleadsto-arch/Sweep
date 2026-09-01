@@ -1,0 +1,219 @@
+{
+  "joint_multitask": {
+    "experiment": "joint_multitask",
+    "total_params": 206349,
+    "total_time_s": 5.8,
+    "best_val_f1": 0.9405,
+    "test_results": {
+      "logic": {
+        "f1": 0.8818,
+        "accuracy": 0.875,
+        "samples": 8
+      },
+      "recognition": {
+        "f1": 1.0,
+        "accuracy": 1.0,
+        "samples": 6
+      },
+      "math": {
+        "f1": 0.8942,
+        "accuracy": 0.9286,
+        "samples": 14
+      },
+      "basic": {
+        "f1": 1.0,
+        "accuracy": 1.0,
+        "samples": 6
+      },
+      "advanced": {
+        "f1": 0.7667,
+        "accuracy": 0.8333,
+        "samples": 6
+      }
+    },
+    "avg_test_f1": 0.9085,
+    "history": [
+      {
+        "epoch": 1,
+        "train_loss": 0.8247,
+        "val_loss": 0.7958,
+        "val_f1": 0.4253
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.7898,
+        "val_loss": 0.7471,
+        "val_f1": 0.6253
+      },
+      {
+        "epoch": 3,
+        "train_loss": 0.7205,
+        "val_loss": 0.6332,
+        "val_f1": 0.6253
+      },
+      {
+        "epoch": 4,
+        "train_loss": 0.5811,
+        "val_loss": 0.4978,
+        "val_f1": 0.7453
+      },
+      {
+        "epoch": 5,
+        "train_loss": 0.4849,
+        "val_loss": 0.4429,
+        "val_f1": 0.8253
+      },
+      {
+        "epoch": 6,
+        "train_loss": 0.4331,
+        "val_loss": 0.4128,
+        "val_f1": 0.8253
+      },
+      {
+        "epoch": 7,
+        "train_loss": 0.3844,
+        "val_loss": 0.3852,
+        "val_f1": 0.8253
+      },
+      {
+        "epoch": 8,
+        "train_loss": 0.3337,
+        "val_loss": 0.3628,
+        "val_f1": 0.8253
+      },
+      {
+        "epoch": 9,
+        "train_loss": 0.3057,
+        "val_loss": 0.34,
+        "val_f1": 0.8765
+      },
+      {
+        "epoch": 10,
+        "train_loss": 0.2723,
+        "val_loss": 0.3106,
+        "val_f1": 0.8765
+      },
+      {
+        "epoch": 11,
+        "train_loss": 0.2386,
+        "val_loss": 0.2728,
+        "val_f1": 0.8765
+      },
+      {
+        "epoch": 12,
+        "train_loss": 0.2058,
+        "val_loss": 0.2353,
+        "val_f1": 0.8765
+      },
+      {
+        "epoch": 13,
+        "train_loss": 0.1801,
+        "val_loss": 0.2109,
+        "val_f1": 0.8765
+      },
+      {
+        "epoch": 14,
+        "train_loss": 0.1609,
+        "val_loss": 0.1852,
+        "val_f1": 0.8765
+      },
+      {
+        "epoch": 15,
+        "train_loss": 0.1384,
+        "val_loss": 0.166,
+        "val_f1": 0.8527
+      },
+      {
+        "epoch": 16,
+        "train_loss": 0.1237,
+        "val_loss": 0.1473,
+        "val_f1": 0.8857
+      },
+      {
+        "epoch": 17,
+        "train_loss": 0.1035,
+        "val_loss": 0.1418,
+        "val_f1": 0.9405
+      },
+      {
+        "epoch": 18,
+        "train_loss": 0.0932,
+        "val_loss": 0.14,
+        "val_f1": 0.9405
+      },
+      {
+        "epoch": 19,
+        "train_loss": 0.0803,
+        "val_loss": 0.1376,
+        "val_f1": 0.9405
+      },
+      {
+        "epoch": 20,
+        "train_loss": 0.0728,
+        "val_loss": 0.1423,
+        "val_f1": 0.9405
+      },
+      {
+        "epoch": 21,
+        "train_loss": 0.0635,
+        "val_loss": 0.1522,
+        "val_f1": 0.9405
+      },
+      {
+        "epoch": 22,
+        "train_loss": 0.0538,
+        "val_loss": 0.1733,
+        "val_f1": 0.9405
+      },
+      {
+        "epoch": 23,
+        "train_loss": 0.0491,
+        "val_loss": 0.1942,
+        "val_f1": 0.9405
+      },
+      {
+        "epoch": 24,
+        "train_loss": 0.0412,
+        "val_loss": 0.1599,
+        "val_f1": 0.9405
+      },
+      {
+        "epoch": 25,
+        "train_loss": 0.0344,
+        "val_loss": 0.1462,
+        "val_f1": 0.9405
+      }
+    ]
+  },
+  "finetuned_embeddings": {
+    "experiment": "finetuned_embeddings",
+    "total_params": 35011,
+    "total_time_s": 0.5,
+    "test_f1": 0.4232,
+    "test_acc": 0.375,
+    "best_val_f1": 0.75
+  },
+  "cross_task": {
+    "experiment": "cross_task",
+    "results": {
+      "logic_on_math": {
+        "accuracy": 1.0,
+        "correct": 3,
+        "total": 3
+      },
+      "math_on_logic": {
+        "accuracy": 1.0,
+        "correct": 3,
+        "total": 3
+      },
+      "logic_on_advanced": {
+        "accuracy": 0.6667,
+        "correct": 2,
+        "total": 3
+      }
+    },
+    "overall_accuracy": 0.8889,
+    "total_correct": 8,
+    "total_samples": 9
+  }
+}

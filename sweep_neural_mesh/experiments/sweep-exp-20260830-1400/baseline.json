@@ -1,0 +1,67 @@
+{
+  "baseline": {
+    "f1": 0.0808,
+    "precision": 0.0494,
+    "recall": 0.2222,
+    "per_class": {},
+    "confusion_matrix": [
+      [
+        6,
+        0,
+        0
+      ],
+      [
+        14,
+        0,
+        0
+      ],
+      [
+        7,
+        0,
+        0
+      ]
+    ],
+    "calibration": [
+      {
+        "range": "0.0-0.5",
+        "count": 27,
+        "accuracy": 0.2222,
+        "avg_confidence": 0.3561
+      }
+    ],
+    "total_samples": 27,
+    "correct": 6,
+    "accuracy": 0.2222
+  },
+  "hardware": {
+    "cpu": "Intel64 Family 6 Model 186 Stepping 3, GenuineIntel",
+    "cores": 12,
+    "ram_total_gb": 15.7,
+    "ram_available_gb": 1.5,
+    "ram_used_percent": 90.4,
+    "os": "Windows-11-10.0.26200-SP0",
+    "python": "3.13.7",
+    "pytorch": "2.9.1+cu126",
+    "cuda": false,
+    "gpu": "None"
+  },
+  "dataset": {
+    "experiment_id": "sweep-exp-20260830-1400",
+    "task": "evidence_classification",
+    "train_samples": 123,
+    "val_samples": 27,
+    "test_samples": 27,
+    "classes": [
+      "SUPPORTS",
+      "REFUTES",
+      "NEUTRAL"
+    ],
+    "train_distribution": {
+      "REFUTES": 38,
+      "SUPPORTS": 46,
+      "NEUTRAL": 39
+    },
+    "dataset_hash": "fdfb0b54e347",
+    "seed": 42
+  }
+}

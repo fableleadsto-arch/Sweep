@@ -1,0 +1,26 @@
+{
+  "rag": {
+    "status": "success"
+  },
+  "web_search": {
+    "status": "success"
+  },
+  "classifiers": {
+    "logic": {
+      "accuracy": 0.7325000166893005,
+      "samples": 8000
+    },
+    "math": {
+      "accuracy": 1.0,
+      "samples": 2000
+    },
+    "evidence": {
+      "accuracy": 1.0,
+      "samples": 1800
+    },
+    "recognition": {
+      "accuracy": 1.0,
+      "samples": 1600
+    }
+  }
+}

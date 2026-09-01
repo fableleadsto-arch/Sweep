@@ -1,0 +1,33 @@
+{
+  "experiment_id": "sweep-exp-20260830-1400",
+  "task": "evidence_classification",
+  "model": "MiniLM + Linear Classifier",
+  "description": "Train a small evidence classifier using frozen MiniLM embeddings as features and a 2-layer MLP for SUPPORTS/REFUTES/NEUTRAL classification",
+  "hardware": {
+    "cpu": "Intel 12 cores",
+    "ram_total_gb": 15.7,
+    "ram_available_gb": 1.1,
+    "gpu": "None",
+    "mode": "CPU-only"
+  },
+  "dataset": {
+    "source": "sweep_generated",
+    "train_samples": 0,
+    "val_samples": 0,
+    "test_samples": 0,
+    "classes": ["SUPPORTS", "REFUTES", "NEUTRAL"]
+  },
+  "hyperparameters": {
+    "embedding_dim": 384,
+    "hidden_dim": 128,
+    "num_classes": 3,
+    "learning_rate": 0.001,
+    "batch_size": 32,
+    "epochs": 20,
+    "patience": 5,
+    "weight_decay": 0.0001,
+    "seed": 42
+  },
+  "model_params": "~200K trainable parameters",
+  "estimated_memory": "~500MB peak"
+}
