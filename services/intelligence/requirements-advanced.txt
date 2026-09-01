@@ -1,0 +1,14 @@
+# Sweep Intelligence — Advanced/Optional requirements
+# Qwen3-VL, CLIP-L/14 (high-resource)
+
+# ── Everything ─────────────────────────────────────────────────────
+-r requirements-core.txt
+-r requirements-vision.txt
+-r requirements-audio.txt
+-r requirements-documents.txt
+
+# ── Diffusion (optional) ──────────────────────────────────────────
+diffusers>=0.28,<1.0
+
+# ── Additional NLP ────────────────────────────────────────────────
+networkx>=3.3,<4.0

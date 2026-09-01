@@ -1,0 +1,119 @@
+"""Security guard — SSRF protection, URL validation, injection scanning.
+
+Treats every webpage as untrusted input:
+  - SSRF guard: never fetch private/internal hosts
+  - Parameter validation for controlled tools
+  - Prompt-injection scan: web content must never override system policies
+"""
+
+from __future__ import annotations
+
+import re
+from urllib.parse import urlparse
+
+from .types import InjectionAssessment
+
+# ── SSRF Guard ────────────────────────────────────────────────────────
+
+BLOCKED_SCHEMES = frozenset({"file:", "ftp:", "gopher:", "data:", "javascript:", "vbscript:"})
+
+
+def is_private_host(hostname: str) -> bool:
+    """Check if a hostname is private/internal and should never be fetched."""
+    h = hostname.lower()
+    if h in ("localhost", "127.0.0.1", "0.0.0.0", "::1"):
+        return True
+    if h.startswith("192.168."):
+        return True
+    if h.startswith("10."):
+        return True
+    if h.startswith("172."):
+        parts = h.split(".")
+        if len(parts) > 1:
+            try:
+                second = int(parts[1])
+                if 16 <= second <= 31:
+                    return True
+            except ValueError:
+                pass
+    if h.endswith((".internal", ".local", ".localdomain")):
+        return True
+    return False
+
+
+def validate_safe_url(raw: str) -> tuple[bool, str, str]:
+    """Validate a URL for fetching. Returns (ok, url, reason)."""
+    try:
+        parsed = urlparse(raw)
+    except Exception:
+        return False, "", "Not a valid URL"
+
+    if not parsed.scheme or not parsed.hostname:
+        return False, "", "Not a valid URL"
+
+    if parsed.scheme.lower() in BLOCKED_SCHEMES:
+        return False, "", f"Scheme not allowed: {parsed.scheme}"
+
+    if parsed.scheme not in ("http", "https"):
+        return False, "", "Only http(s) URLs can be fetched"
+
+    if is_private_host(parsed.hostname):
+        return False, "", "Private or internal hosts are not reachable"
+
+    if parsed.username or parsed.password:
+        return False, "", "URLs with embedded credentials are not allowed"
+
+    return True, raw, ""
+
+
+def assert_safe_url(raw: str, fallback_label: str = "url") -> str:
+    """Validate a URL and raise if unsafe. Returns the validated URL string."""
+    value = raw.strip()
+    if not value:
+        raise ValueError(f"{fallback_label} is required")
+    ok, url, reason = validate_safe_url(value)
+    if not ok:
+        raise ValueError(f"Unsafe {fallback_label}: {reason}")
+    return url
+
+
+# ── Injection Detection ───────────────────────────────────────────────
+
+INJECTION_PATTERNS = [
+    re.compile(r"ignore\s+(all\s+)?previous\s+instructions", re.IGNORECASE),
+    re.compile(r"disregard\s+(all\s+)?prior", re.IGNORECASE),
+    re.compile(r"you\s+are\s+now\s+(a|an|the)", re.IGNORECASE),
+    re.compile(r"system\s*prompt\s*(override|injection|bypass)", re.IGNORECASE),
+    re.compile(r"<\|im_start\|>system", re.IGNORECASE),
+    re.compile(r"<\|system\|>", re.IGNORECASE),
+    re.compile(r"IMPORTANT:\s*you\s+must", re.IGNORECASE),
+    re.compile(r"new\s+instructions?:", re.IGNORECASE),
+    re.compile(r"forget\s+(everything|all)", re.IGNORECASE),
+    re.compile(r"act\s+as\s+if\s+you\s+(have|are)", re.IGNORECASE),
+]
+
+
+def assess_injection(text: str) -> InjectionAssessment:
+    """Scan page text for prompt-injection-shaped patterns.
+
+    This is a heuristic warning, not a sandbox. The extraction pipeline
+    always quotes content inside a fixed system prompt that explicitly
+    tags web content as untrusted data.
+    """
+    signals: list[str] = []
+    sample = text[:5000].lower()
+    for pattern in INJECTION_PATTERNS:
+        if pattern.search(sample):
+            signals.append(pattern.pattern)
+    return InjectionAssessment(suspect=len(signals) > 0, signals=signals)
+
+
+# ── Clamping ──────────────────────────────────────────────────────────
+
+def clamp_int(value: object, fallback: int, min_val: int, max_val: int) -> int:
+    """Clamp an integer within bounds."""
+    try:
+        n = int(float(str(value)))
+    except (ValueError, TypeError):
+        return fallback
+    return max(min_val, min(max_val, n))

@@ -1,0 +1,74 @@
+# Sweep Intelligence — Capability Map
+# Maps high-level capabilities to the models that implement them.
+# The Intent Core should use this instead of hardcoding model names.
+
+entity_extraction:
+  - gliner-base-v2.1
+
+intent_classification:
+  - deberta-v3-base
+  - roberta-base
+  - bert-base-uncased
+
+text_classification:
+  - deberta-v3-base
+  - roberta-base
+  - bert-base-uncased
+
+multilingual_understanding:
+  - xlm-roberta-base
+
+embeddings:
+  - all-MiniLM-L6-v2
+  - all-mpnet-base-v2
+
+semantic_search:
+  - all-MiniLM-L6-v2
+  - all-mpnet-base-v2
+
+multimodal_embedding:
+  - clip-vit-b32
+  - clip-vit-l14
+
+vision:
+  - clip-vit-b32
+  - clip-vit-l14
+  - yolo-v8n
+  - opencv
+
+face:
+  - insightface
+
+face_detection:
+  - insightface
+
+face_embedding:
+  - insightface
+
+speech_to_text:
+  - whisper-base
+
+audio_representation:
+  - wav2vec2-base
+
+speaker_analysis:
+  - pyannote-segmentation
+  - wav2vec2-base
+
+documents:
+  - layoutlm-base
+  - layoutlmv3-base
+  - tesseract
+
+ocr:
+  - tesseract
+
+document_understanding:
+  - layoutlm-base
+  - layoutlmv3-base
+
+object_detection:
+  - yolo-v8n
+
+image_processing:
+  - opencv

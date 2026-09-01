@@ -1,0 +1,14 @@
+# Sweep Intelligence — Audio/Speech requirements
+# Whisper, Wav2Vec2, pyannote
+
+# ── Core (must install first) ──────────────────────────────────────
+-r requirements-core.txt
+
+# ── Speech-to-Text ─────────────────────────────────────────────────
+openai-whisper>=20231117
+
+# ── Audio Processing ──────────────────────────────────────────────
+torchaudio>=2.0
+
+# ── Speaker Diarization ───────────────────────────────────────────
+pyannote.audio>=3.0,<5.0

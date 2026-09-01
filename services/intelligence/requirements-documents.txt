@@ -1,0 +1,12 @@
+# Sweep Intelligence — Document requirements
+# LayoutLM, LayoutLMv3
+
+# ── Core (must install first) ──────────────────────────────────────
+-r requirements-core.txt
+
+# ── Transformers (already in core) ─────────────────────────────────
+# transformers>=4.40  # included in core
+
+# ── PDF Processing ────────────────────────────────────────────────
+PyMuPDF>=1.23,<2.0
+python-docx>=1.0,<2.0

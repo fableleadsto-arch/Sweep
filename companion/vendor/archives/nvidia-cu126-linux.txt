@@ -1,0 +1,24 @@
+# nvidia CUDA 12.6 runtime wheels — exact pins required by torch 2.9.1+cu126
+# on Linux (platform_system == "Linux"). Source: the wheel's own METADATA
+# (PEP 658 sidecar). The Windows torch wheel bundles the CUDA runtime in-wheel
+# and declares NONE of these, so they are only needed for offline Linux GPU
+# installs (e.g. Dockerfile.brain on an NVIDIA host).
+#
+# Fetch all of them with:
+#   python -m pip download -r nvidia-cu126-linux.txt -d . --only-binary=:all:
+# (or run ./fetch-nvidia-linux.sh). They are gitignored like every *.whl.
+nvidia-cuda-nvrtc-cu12==12.6.77
+nvidia-cuda-runtime-cu12==12.6.77
+nvidia-cuda-cupti-cu12==12.6.80
+nvidia-cudnn-cu12==9.10.2.21
+nvidia-cublas-cu12==12.6.4.1
+nvidia-cufft-cu12==11.3.0.4
+nvidia-curand-cu12==10.3.7.77
+nvidia-cusolver-cu12==11.7.1.2
+nvidia-cusparse-cu12==12.5.4.2
+nvidia-cusparselt-cu12==0.7.1
+nvidia-nccl-cu12==2.27.5
+nvidia-nvshmem-cu12==3.3.20
+nvidia-nvtx-cu12==12.6.77
+nvidia-nvjitlink-cu12==12.6.85
+nvidia-cufile-cu12==1.11.1.6
