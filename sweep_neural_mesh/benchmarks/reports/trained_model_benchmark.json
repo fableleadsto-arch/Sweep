@@ -1,0 +1,482 @@
+{
+  "trained_model": {
+    "accuracy": 0.0,
+    "correct": 0,
+    "total": 16,
+    "parameters": 2098304,
+    "training_steps": 500,
+    "final_loss": 0.0023
+  },
+  "baseline": {
+    "accuracy": 0.0625,
+    "correct": 1,
+    "total": 16
+  },
+  "improvement": -0.0625,
+  "tasks": [
+    {
+      "query": "What is the capital of France?",
+      "expected": "paris",
+      "category": "factual",
+      "top_predictions": [
+        {
+          "token": " is",
+          "score": 15.405
+        },
+        {
+          "token": "%",
+          "score": 3.667
+        },
+        {
+          "token": " laid",
+          "score": 3.421
+        },
+        {
+          "token": " from",
+          "score": 3.363
+        },
+        {
+          "token": " for",
+          "score": 3.176
+        }
+      ],
+      "found_in_top10": false,
+      "latency_ms": 12.9
+    },
+    {
+      "query": "What is the chemical formula for water?",
+      "expected": "h2o",
+      "category": "factual",
+      "top_predictions": [
+        {
+          "token": " 8",
+          "score": 4.675
+        },
+        {
+          "token": " liquid",
+          "score": 4.167
+        },
+        {
+          "token": " What",
+          "score": 4.164
+        },
+        {
+          "token": " 1990",
+          "score": 4.035
+        },
+        {
+          "token": " does",
+          "score": 3.969
+        }
+      ],
+      "found_in_top10": false,
+      "latency_ms": 9.3
+    },
+    {
+      "query": "How many planets are in the solar system?",
+      "expected": "8",
+      "category": "factual",
+      "top_predictions": [
+        {
+          "token": " is",
+          "score": 11.711
+        },
+        {
+          "token": "%",
+          "score": 5.323
+        },
+        {
+          "token": " animals",
+          "score": 3.867
+        },
+        {
+          "token": " The",
+          "score": 3.623
+        },
+        {
+          "token": " the",
+          "score": 3.6
+        }
+      ],
+      "found_in_top10": false,
+      "latency_ms": 12.1
+    },
+    {
+      "query": "What is the speed of light?",
+      "expected": "299792458",
+      "category": "factual",
+      "top_predictions": [
+        {
+          "token": " is",
+          "score": 13.329
+        },
+        {
+          "token": " for",
+          "score": 4.892
+        },
+        {
+          "token": "^",
+          "score": 3.384
+        },
+        {
+          "token": "Before",
+          "score": 3.323
+        },
+        {
+          "token": " this",
+          "score": 3.311
+        }
+      ],
+      "found_in_top10": false,
+      "latency_ms": 10.3
+    },
+    {
+      "query": "What is the largest ocean?",
+      "expected": "pacific",
+      "category": "factual",
+      "top_predictions": [
+        {
+          "token": " is",
+          "score": 12.302
+        },
+        {
+          "token": " If",
+          "score": 4.508
+        },
+        {
+          "token": " Reliability",
+          "score": 3.673
+        },
+        {
+          "token": " at",
+          "score": 3.611
+        },
+        {
+          "token": " from",
+          "score": 3.604
+        }
+      ],
+      "found_in_top10": false,
+      "latency_ms": 9.0
+    },
+    {
+      "query": "What year did World War II end?",
+      "expected": "1945",
+      "category": "factual",
+      "top_predictions": [
+        {
+          "token": ".",
+          "score": 5.43
+        },
+        {
+          "token": " is",
+          "score": 4.86
+        },
+        {
+          "token": " after",
+          "score": 3.683
+        },
+        {
+          "token": " Premise",
+          "score": 3.675
+        },
+        {
+          "token": " of",
+          "score": 3.572
+        }
+      ],
+      "found_in_top10": false,
+      "latency_ms": 11.7
+    },
+    {
+      "query": "What is photosynthesis?",
+      "expected": "energy",
+      "category": "factual",
+      "top_predictions": [
+        {
+          "token": " is",
+          "score": 15.244
+        },
+        {
+          "token": "%",
+          "score": 4.111
+        },
+        {
+          "token": " from",
+          "score": 3.215
+        },
+        {
+          "token": " at",
+          "score": 3.063
+        },
+        {
+          "token": " laid",
+          "score": 2.95
+        }
+      ],
+      "found_in_top10": false,
+      "latency_ms": 15.4
+    },
+    {
+      "query": "What is DNA?",
+      "expected": "genetic",
+      "category": "factual",
+      "top_predictions": [
+        {
+          "token": " is",
+          "score": 14.235
+        },
+        {
+          "token": "%",
+          "score": 4.734
+        },
+        {
+          "token": " from",
+          "score": 3.666
+        },
+        {
+          "token": " company",
+          "score": 3.641
+        },
+        {
+          "token": " The",
+          "score": 3.618
+        }
+      ],
+      "found_in_top10": false,
+      "latency_ms": 8.5
+    },
+    {
+      "query": "What is 15% of 200?",
+      "expected": "30",
+      "category": "math",
+      "top_predictions": [
+        {
+          "token": " is",
+          "score": 5.708
+        },
+        {
+          "token": " mph",
+          "score": 4.559
+        },
+        {
+          "token": " 1945",
+          "score": 4.048
+        },
+        {
+          "token": " Paris",
+          "score": 3.893
+        },
+        {
+          "token": "5",
+          "score": 3.661
+        }
+      ],
+      "found_in_top10": false,
+      "latency_ms": 103.3
+    },
+    {
+      "query": "Convert 100F to Celsius",
+      "expected": "37.8",
+      "category": "math",
+      "top_predictions": [
+        {
+          "token": " is",
+          "score": 8.784
+        },
+        {
+          "token": "%",
+          "score": 4.412
+        },
+        {
+          "token": " this",
+          "score": 3.85
+        },
+        {
+          "token": " supports",
+          "score": 3.658
+        },
+        {
+          "token": " tectonic",
+          "score": 3.474
+        }
+      ],
+      "found_in_top10": false,
+      "latency_ms": 237.9
+    },
+    {
+      "query": "What is 2^10?",
+      "expected": "1024",
+      "category": "math",
+      "top_predictions": [
+        {
+          "token": " is",
+          "score": 5.985
+        },
+        {
+          "token": ".",
+          "score": 5.702
+        },
+        {
+          "token": " Apple",
+          "score": 5.381
+        },
+        {
+          "token": " from",
+          "score": 5.109
+        },
+        {
+          "token": " company",
+          "score": 4.114
+        }
+      ],
+      "found_in_top10": false,
+      "latency_ms": 21.8
+    },
+    {
+      "query": "Area of rectangle 8x5?",
+      "expected": "40",
+      "category": "math",
+      "top_predictions": [
+        {
+          "token": " is",
+          "score": 7.174
+        },
+        {
+          "token": "Before",
+          "score": 4.563
+        },
+        {
+          "token": " than",
+          "score": 4.381
+        },
+        {
+          "token": " The",
+          "score": 4.075
+        },
+        {
+          "token": " length",
+          "score": 4.038
+        }
+      ],
+      "found_in_top10": false,
+      "latency_ms": 31.5
+    },
+    {
+      "query": "If all cats are animals and all animals are living things, a",
+      "expected": "yes",
+      "category": "reasoning",
+      "top_predictions": [
+        {
+          "token": ",",
+          "score": 5.82
+        },
+        {
+          "token": " rains",
+          "score": 4.528
+        },
+        {
+          "token": " living",
+          "score": 3.973
+        },
+        {
+          "token": " suggests",
+          "score": 3.947
+        },
+        {
+          "token": " phase",
+          "score": 3.716
+        }
+      ],
+      "found_in_top10": false,
+      "latency_ms": 15.2
+    },
+    {
+      "query": "If it rains the ground gets wet. It is raining. Is the groun",
+      "expected": "yes",
+      "category": "reasoning",
+      "top_predictions": [
+        {
+          "token": " is",
+          "score": 6.808
+        },
+        {
+          "token": " Smith",
+          "score": 4.505
+        },
+        {
+          "token": " This",
+          "score": 4.117
+        },
+        {
+          "token": " regular",
+          "score": 3.866
+        },
+        {
+          "token": " founded",
+          "score": 3.772
+        }
+      ],
+      "found_in_top10": false,
+      "latency_ms": 17.1
+    },
+    {
+      "query": "Evidence: Exercise reduces heart disease. Evidence: Exercise",
+      "expected": "yes",
+      "category": "evidence",
+      "top_predictions": [
+        {
+          "token": " is",
+          "score": 10.341
+        },
+        {
+          "token": "%",
+          "score": 5.073
+        },
+        {
+          "token": " than",
+          "score": 4.667
+        },
+        {
+          "token": " it",
+          "score": 4.593
+        },
+        {
+          "token": " from",
+          "score": 4.224
+        }
+      ],
+      "found_in_top10": false,
+      "latency_ms": 20.9
+    },
+    {
+      "query": "Evidence: Drug reduces symptoms. Evidence: Drug shows no eff",
+      "expected": "uncertain",
+      "category": "evidence",
+      "top_predictions": [
+        {
+          "token": " is",
+          "score": 11.562
+        },
+        {
+          "token": " The",
+          "score": 4.903
+        },
+        {
+          "token": " laid",
+          "score": 3.92
+        },
+        {
+          "token": "Before",
+          "score": 3.509
+        },
+        {
+          "token": " about",
+          "score": 3.363
+        }
+      ],
+      "found_in_top10": false,
+      "latency_ms": 16.5
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "entry_id": "AUD-000002",
+  "timestamp": 1788110775.8553536,
+  "action": "data_access",
+  "actor": "trainer",
+  "target": "open_facts",
+  "result": "allowed",
+  "reason": "Access for model training",
+  "metadata": {}
+}

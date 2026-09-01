@@ -1,0 +1,7 @@
+Category,Tasks,Accuracy,Precision,Recall,F1,AvgConfidence,AvgLatencyMs,HallucinationRate,CalibrationError
+reasoning,3,0.3333,1.0,0.5,0.6667,0.6,0.0,0.0,0.2667
+mathematics,10,1.0,0.0,0.0,0.0,0.95,0.0,0.0,0.05
+general,110,1.0,0.0,0.0,0.0,0.95,0.0,0.0,0.05
+knowledge,3,0.0,0.0,0.0,0.0,0.5,0.0,0.0,0.5
+entity_resolution,2,0.0,0.0,0.0,0.0,0.5,0.0,0.0,0.5
+uncertainty,3,0.6667,0.0,0.0,0.0,0.4667,0.0,0.0,0.2

@@ -1,0 +1,11 @@
+{
+  "results": {
+    "level0_basic": 1.0,
+    "level1_language": 1.0,
+    "level2_reasoning": 1.0,
+    "task_handlers": 1.0
+  },
+  "overall": 1.0,
+  "avg_latency_ms": 928.4297742880881,
+  "total_tests": 35
+}

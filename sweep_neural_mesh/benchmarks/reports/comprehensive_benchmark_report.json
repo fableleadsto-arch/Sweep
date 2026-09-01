@@ -1,0 +1,80 @@
+{
+  "summary": {
+    "total_tasks": 131,
+    "overall_accuracy": 0.9389,
+    "overall_f1": 0.1111,
+    "overall_calibration_error": 0.2611,
+    "overall_hallucination_rate": 0.0,
+    "overall_avg_latency_ms": 0.0,
+    "categories_evaluated": 6
+  },
+  "category_metrics": {
+    "reasoning": {
+      "tasks": 3,
+      "accuracy": 0.3333,
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.6667,
+      "avg_confidence": 0.6,
+      "avg_latency_ms": 0.0,
+      "hallucination_rate": 0.0,
+      "calibration_error": 0.2667
+    },
+    "mathematics": {
+      "tasks": 10,
+      "accuracy": 1.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "avg_confidence": 0.95,
+      "avg_latency_ms": 0.0,
+      "hallucination_rate": 0.0,
+      "calibration_error": 0.05
+    },
+    "general": {
+      "tasks": 110,
+      "accuracy": 1.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "avg_confidence": 0.95,
+      "avg_latency_ms": 0.0,
+      "hallucination_rate": 0.0,
+      "calibration_error": 0.05
+    },
+    "knowledge": {
+      "tasks": 3,
+      "accuracy": 0.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "avg_confidence": 0.5,
+      "avg_latency_ms": 0.0,
+      "hallucination_rate": 0.0,
+      "calibration_error": 0.5
+    },
+    "entity_resolution": {
+      "tasks": 2,
+      "accuracy": 0.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "avg_confidence": 0.5,
+      "avg_latency_ms": 0.0,
+      "hallucination_rate": 0.0,
+      "calibration_error": 0.5
+    },
+    "uncertainty": {
+      "tasks": 3,
+      "accuracy": 0.6667,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "avg_confidence": 0.4667,
+      "avg_latency_ms": 0.0,
+      "hallucination_rate": 0.0,
+      "calibration_error": 0.2
+    }
+  },
+  "note": "This benchmark measures multiple dimensions of performance. No single score represents overall intelligence."
+}
