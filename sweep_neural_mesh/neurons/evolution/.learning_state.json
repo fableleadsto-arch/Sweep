@@ -1,0 +1,9 @@
+{
+  "learned_facts": [],
+  "failure_patterns": {
+    "factual": 1
+  },
+  "success_patterns": {
+    "test": 29
+  }
+}
